@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Ctrl + Alt + Nostalgia</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Special+Elite&family=Caveat:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- ── Stylesheets (one per chapter) ── -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/toc.css">
+  <link rel="stylesheet" href="assets/css/ch1-photos.css">
+  <link rel="stylesheet" href="assets/css/ch2-calls.css">
+  <link rel="stylesheet" href="assets/css/ch3-messages.css">
+  <link rel="stylesheet" href="assets/css/ch4-ideas.css">
+  <link rel="stylesheet" href="assets/css/ch5-evidence.css">
+  <link rel="stylesheet" href="assets/css/ch5-evidence-archive.css">
+  <link rel="stylesheet" href="assets/css/ch7-10.css">
+  <link rel="stylesheet" href="assets/css/ch3-lore-archive.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     DUST PARTICLES CANVAS
+════════════════════════════════════════ -->
+<canvas id="dust-canvas"></canvas>
+
+<!-- ════════════════════════════════════════
+     COVER SCREEN
+════════════════════════════════════════ -->
+<div id="cover-screen">
+  <div class="desk"></div>
+  <div class="candle-glow"></div>
+
+  <div class="journal-cover-wrap">
+    <div class="journal-cover-3d">
+      <div class="cover-front paper-texture">
+        <div class="cover-corner tl"></div>
+        <div class="cover-corner tr"></div>
+        <div class="cover-corner bl"></div>
+        <div class="cover-corner br"></div>
+        <div class="cover-spine-line"></div>
+
+        <span class="cover-classification">Personal Archive · Private</span>
+        <h1 class="cover-title">Ctrl + Alt +<br>Nostalgia</h1>
+        <p class="cover-subtitle">A Personal Archive</p>
+        <div class="cover-rule"></div>
+        <p class="cover-year">Recovered: 2026</p>
+        <div class="cover-rule" style="margin-top:0;"></div>
+
+        <div class="cover-property">
+          Property of:<br>
+          <!-- 📌 EDIT: Replace "Her Name Here" with the actual name -->
+          <span class="cover-name">Her Name Here</span>
+        </div>
+
+        <button class="open-journal-btn" onclick="openJournal()">Open the Journal</button>
+
+        <div class="cover-archive-info">
+          Classification: Private · Access Level: One Person<br>
+          Copies: 1 · If found, please return to the owner.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     INSIDE COVER
+════════════════════════════════════════ -->
+<div id="inside-cover">
+  <div class="archive-card">
+    <div class="archive-title-block">Archive Information</div>
+    <hr class="archive-rule">
+    <p class="archive-label">Classification</p>
+    <p class="archive-value">Private</p>
+    <p class="archive-label">Access Level</p>
+    <p class="archive-value">One Person</p>
+    <p class="archive-label">Copies in Existence</p>
+    <p class="archive-value">1</p>
+    <p class="archive-label">Contents</p>
+    <p class="archive-value">Everything that mattered</p>
+    <hr class="archive-rule">
+    <p style="font-family:'Caveat',cursive; font-size:15px; color:var(--ink-faded); line-height:1.7; font-style:italic;">If found, please return to the owner.<br>She'll know what it is.</p>
+    <button class="archive-proceed" onclick="enterJournal()">Turn to Contents →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     JOURNAL BODY
+════════════════════════════════════════ -->
+<div id="journal-body">
+
+  <!-- Sticky nav -->
+  <div class="journal-chrome">
+    <div class="chrome-top">
+      <button class="wordmark" onclick="showPage('toc')">Ctrl + Alt + Nostalgia</button>
+      <span class="chapter-indicator" id="chapter-indicator">Table of Contents</span>
+    </div>
+    <div class="journal-tabs" id="journal-tabs">
+      <button class="tab-btn" data-page="toc">Contents</button>
+      <button class="tab-btn" data-page="p1">I · Photos</button>
+      <button class="tab-btn" data-page="p2">II · Calls</button>
+      <button class="tab-btn" data-page="p3">III · Messages</button>
+      <button class="tab-btn" data-page="p4">IV · Ideas</button>
+      <button class="tab-btn" data-page="p5">V · Evidence</button>
+      <button class="tab-btn" data-page="p6">VI · Plans</button>
+      <button class="tab-btn" data-page="p7">VII · Little Things</button>
+      <button class="tab-btn" data-page="p8">VIII · Letter</button>
+      <button class="tab-btn" data-page="ending">IX · End</button>
+    </div>
+  </div>
+
+  <!-- ── TABLE OF CONTENTS ── -->
+  <div id="page-toc" class="journal-page">
+    <div class="page-wrap">
+      <div class="toc-header">
+        <p class="toc-eyebrow">Ctrl + Alt + Nostalgia · Personal Archive</p>
+        <h1 class="toc-title">Table of Contents</h1>
+        <p class="toc-sub">ten chapters. one person. no further explanation needed.</p>
+        <div class="checkout-card">
+          <div class="checkout-card-title">Library Card</div>
+          <div class="checkout-card-line">Due: Never</div>
+          <div class="checkout-card-line">Borrower: Her</div>
+          <div class="checkout-card-line">Return: —</div>
+        </div>
+      </div>
+      <div class="toc-entries">
+        <div class="toc-row" onclick="showPage('p1')"><span class="toc-row-num">I</span><div class="toc-row-content"><div class="toc-row-title">📸 Polaroids &amp; Pictures</div><span class="toc-row-desc">some moments deserved a page</span></div><span class="toc-row-arrow">→</span></div>
+        <div class="toc-row" onclick="showPage('p2')"><span class="toc-row-num">II</span><div class="toc-row-content"><div class="toc-row-title">📞 Call Files</div><span class="toc-row-desc">classified. duration: unreasonable.</span></div><span class="toc-row-arrow">→</span></div>
+        <div class="toc-row" onclick="showPage('p3')"><span class="toc-row-num">III</span><div class="toc-row-content"><div class="toc-row-title">💬 Message Fragments</div><span class="toc-row-desc">not full chats. just the ones that stayed.</span></div><span class="toc-row-arrow">→</span></div>
+        <div class="toc-row" onclick="showPage('p4')"><span class="toc-row-num">IV</span><div class="toc-row-content"><div class="toc-row-title">💡 Business Ideas</div><span class="toc-row-desc">feasibility: 3%. confidence: 100%.</span></div><span class="toc-row-arrow">→</span></div>
+        <div class="toc-row" onclick="showPage('p5')"><span class="toc-row-num">V</span><div class="toc-row-content"><div class="toc-row-title">😂 Evidence</div><span class="toc-row-desc">screenshots. peak intelligence at 2:07 AM.</span></div><span class="toc-row-arrow">→</span></div>
+        <div class="toc-row" onclick="showPage('p6')"><span class="toc-row-num">VI</span><div class="toc-row-content"><div class="toc-row-title">🗂️ Pending Operations</div><span class="toc-row-desc">not a to-do list. a folder of future operations.</span></div><span class="toc-row-arrow">→</span></div>
+        <div class="toc-row" onclick="showPage('p7')"><span class="toc-row-num">VII</span><div class="toc-row-content"><div class="toc-row-title">📍 Little Things</div><span class="toc-row-desc">the small details that somehow became everything</span></div><span class="toc-row-arrow">→</span></div>
+        <div class="toc-row" onclick="showPage('p8')"><span class="toc-row-num">VIII</span><div class="toc-row-content"><div class="toc-row-title">💌 Letter</div><span class="toc-row-desc">the only page with no tape. no doodles. just words.</span></div><span class="toc-row-arrow">→</span></div>
+        <div class="toc-row" onclick="showPage('ending')"><span class="toc-row-num">IX</span><div class="toc-row-content"><div class="toc-row-title">🌙 End of Archive</div><span class="toc-row-desc">no further records found.</span></div><span class="toc-row-arrow">→</span></div>
+      </div>
+    </div>
+    <div class="global-footer">Ctrl + Alt + Nostalgia · Personal Archive · 2026 · Property of Her</div>
+  </div>
+
+  <!-- ── CHAPTERS (each sourced from their own folder) ── -->
+
+  <!-- I · Photos → chapters/1-photos/content.html -->
+  <div id="page-p1" class="journal-page">
+    <div class="page-wrap">
+      <div class="ch-header">
+        <p class="ch-eyebrow">Chapter I · Visual Archive</p>
+        <h1 class="ch-title">Polaroids &amp; Pictures</h1>
+        <p class="ch-sub">some moments deserved a page.</p>
+      </div>
+      <div id="photos-root"></div>
+      <div id="reels-root"></div>
+      <div class="page-footer">Chapter I · Visual Archive · images sourced from /images/photos/ and /images/film/</div>
+    </div>
+  </div>
+
+  <!-- II · Calls → chapters/2-calls/content.html -->
+  <div id="page-p2" class="journal-page">
+    <div class="page-wrap">
+      <div class="ch-header"><p class="ch-eyebrow">Chapter II · Classified</p><h1 class="ch-title">Call Files</h1><p class="ch-sub">every call archived like a classified document.</p></div>
+      <div id="call-summary-root"></div>
+      <div id="call-disclaimer-root"></div>
+      <div id="call-notice-root"></div>
+      <div id="call-records-root" class="case-files"></div>
+      <div class="page-footer">Chapter II · Call Files · classified · duration: a collective unreasonable amount</div>
+    </div>
+  </div>
+
+  <!-- III · Messages → chapters/3-messages/content.html -->
+  <div id="page-p3" class="journal-page">
+    <div class="page-wrap">
+      <div class="ch-header"><p class="ch-eyebrow">Chapter III · Fragments</p><h1 class="ch-title">Message Fragments</h1><p class="ch-sub">not full chats. just the ones that stayed.</p></div>
+      <div id="lore-root" class="lore-archive"></div>
+      <div class="page-footer">Chapter III · Message Fragments · tap a conversation to expand</div>
+    </div>
+  </div>
+
+  <!-- IV · Ideas → chapters/4-ideas/content.html -->
+  <div id="page-p4" class="journal-page">
+    <div class="page-wrap">
+      <div class="ch-header"><p class="ch-eyebrow">Chapter IV · Ventures</p><h1 class="ch-title">Business Ideas</h1><p class="ch-sub">documented at unreasonable hours. reviewed never.</p></div>
+      <div class="notebook-stack">
+        <div class="notebook-page"><div class="nb-doodle" style="--rot:-5deg;top:30px;right:20px;">← brilliant</div><div class="nb-doodle" style="--rot:3deg;bottom:20px;right:40px;">★★★</div><div class="nb-top"><div class="nb-idea-num">Business Idea #04</div><div class="nb-idea-name">The Café + Bookstore + Cat Shelter Startup</div></div><div class="nb-body"><div class="nb-row"><span class="nb-label">Problem</span><span class="nb-val">We were bored. It was 1 AM.</span></div><div class="nb-row"><span class="nb-label">Solution</span><span class="nb-val">Open a café. Attach a bookstore. Add a cat shelter. Call it a startup.</span></div><div class="nb-row"><span class="nb-label">Revenue model</span><span class="nb-val">People pay to pet cats and drink coffee. We read books. Perfect.</span></div><div class="nb-row"><span class="nb-label">Feasibility</span><span class="nb-val"><div class="nb-bar-wrap">3% <div class="nb-bar"><div class="nb-bar-fill red" style="width:3%"></div></div></div></span></div><div class="nb-row"><span class="nb-label">Confidence</span><span class="nb-val"><div class="nb-bar-wrap">100% <div class="nb-bar"><div class="nb-bar-fill green" style="width:100%"></div></div></div></span></div><div class="nb-row"><span class="nb-label">Status</span><span class="nb-val">Alive in spirit. Deceased in planning.</span></div></div></div>
+        <div class="notebook-page"><div class="nb-doodle" style="--rot:4deg;top:28px;right:16px;">?? genius ??</div><div class="nb-top"><div class="nb-idea-num">Business Idea #09</div><div class="nb-idea-name">The "We Know People" Consultancy</div></div><div class="nb-body"><div class="nb-row"><span class="nb-label">Problem</span><span class="nb-val">We give good advice. Nobody pays us for it.</span></div><div class="nb-row"><span class="nb-label">Solution</span><span class="nb-val">Charge. For the advice we give for free at 3 AM anyway.</span></div><div class="nb-row"><span class="nb-label">Feasibility</span><span class="nb-val"><div class="nb-bar-wrap">12% <div class="nb-bar"><div class="nb-bar-fill red" style="width:12%"></div></div></div></span></div><div class="nb-row"><span class="nb-label">Confidence</span><span class="nb-val"><div class="nb-bar-wrap">97% <div class="nb-bar"><div class="nb-bar-fill green" style="width:97%"></div></div></div></span></div><div class="nb-row"><span class="nb-label">Status</span><span class="nb-val">Actively consulting. Unofficially. For free. As always.</span></div></div></div>
+        <div class="notebook-page"><div class="nb-doodle" style="--rot:-3deg;top:30px;right:14px;">we need this</div><div class="nb-top"><div class="nb-idea-num">Business Idea #12</div><div class="nb-idea-name">The App for People Who Overthink</div></div><div class="nb-body"><div class="nb-row"><span class="nb-label">Problem</span><span class="nb-val">Overthinking. Constant. Relentless. Both of us.</span></div><div class="nb-row"><span class="nb-label">Solution</span><span class="nb-val">An app that just says "you're fine. go to sleep." on loop.</span></div><div class="nb-row"><span class="nb-label">Feasibility</span><span class="nb-val"><div class="nb-bar-wrap">34% <div class="nb-bar"><div class="nb-bar-fill red" style="width:34%"></div></div></div></span></div><div class="nb-row"><span class="nb-label">Confidence</span><span class="nb-val"><div class="nb-bar-wrap">89% <div class="nb-bar"><div class="nb-bar-fill green" style="width:89%"></div></div></div></span></div><div class="nb-row"><span class="nb-label">Status</span><span class="nb-val">We are each other's app. Pivoted.</span></div></div></div>
+      </div>
+      <div class="page-footer">Chapter IV · Business Ideas · documented at 2am · viability: unreviewed</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       V · EVIDENCE ARCHIVE
+       Five files, each with its own full-screen view.
+       ════════════════════════════════════════════════════════ -->
+  <div id="page-p5" class="journal-page ev-page">
+    <div id="ev-overlay"></div>
+
+    <!-- ══════════════════════════════
+         ARCHIVE INDEX (filing cabinet)
+    ══════════════════════════════ -->
+    <div id="ev-arch" class="ev-view ev-active">
+      <div class="ev-cab-head">
+        <div class="ev-cab-badge">Restricted Access · Authorized Personnel Only</div>
+        <h1 class="ev-cab-title">Evidence Archive</h1>
+        <p class="ev-cab-sub">Ctrl + Alt + Nostalgia · Chapter V</p>
+        <div class="ev-cab-drawer">
+          <div class="ev-cab-nub"></div>
+          DRAWER A–Z · ALL FILES
+          <div class="ev-cab-nub"></div>
+        </div>
+      </div>
+      <div class="ev-stats">
+        <div class="ev-stat"><b>4</b><small>Files</small></div>
+        <div class="ev-stat"><b>248</b><small>Recovered Messages</small></div>
+        <div class="ev-stat"><b>∞</b><small>Context Lost</small></div>
+        <div class="ev-stat"><b>2026</b><small>Declassified</small></div>
+      </div>
+      <div class="ev-grid">
+
+        <!-- FILE 001 — REACTION FILES -->
+        <div class="ev-card" onclick="evOpen('001')">
+          <div class="ev-card-tab" style="background:#8b3a1e;">Reactions</div>
+          <div class="ev-card-body">
+            <div class="ev-card-num">Evidence 001</div>
+            <div class="ev-card-title">Reaction Files</div>
+            <div class="ev-card-desc">Stickers, reactions &amp; emoji lore.</div>
+            <div class="ev-card-meta">
+              <div class="ev-card-row"><span>Items</span><span>Ongoing</span></div>
+              <div class="ev-card-row"><span>Format</span><span>Visual / Chaotic</span></div>
+              <div class="ev-card-row"><span>Context</span><span>Mostly present</span></div>
+            </div>
+            <div class="ev-card-status" style="color:#c9a84c;border-color:#c9a84c;">● Active</div>
+          </div>
+          <button class="ev-card-btn">Open File →</button>
+        </div>
+
+        <!-- FILE 002 — THE LORE -->
+        <div class="ev-card" onclick="evOpen('002')">
+          <div class="ev-card-tab" style="background:#2d4a28;">Lore</div>
+          <div class="ev-card-body">
+            <div class="ev-card-num">Evidence 002</div>
+            <div class="ev-card-title">The Lore</div>
+            <div class="ev-card-desc">The complete friendship timeline.</div>
+            <div class="ev-card-meta">
+              <div class="ev-card-row"><span>Period</span><span>Beginning → Now</span></div>
+              <div class="ev-card-row"><span>Chapters</span><span>Many</span></div>
+              <div class="ev-card-row"><span>Classification</span><span>Foundational</span></div>
+            </div>
+            <div class="ev-card-status" style="color:#4a8a4a;border-color:#4a8a4a;">● Recovered</div>
+          </div>
+          <button class="ev-card-btn">Open File →</button>
+        </div>
+
+        <!-- FILE 003 — CASE FILE #014 -->
+        <div class="ev-card ev-card-critical" onclick="evOpen('003')">
+          <div class="ev-card-tab" style="background:#922b21;">Critical</div>
+          <div class="ev-card-body">
+            <div class="ev-card-num">Case File #014 · Evidence 003</div>
+            <div class="ev-card-title">Operation: Midnight Escalation</div>
+            <div class="ev-card-desc">Recovered Communication Log.</div>
+            <div class="ev-card-meta">
+              <div class="ev-card-row"><span>Messages</span><span>248 Recovered</span></div>
+              <div class="ev-card-row"><span>Duration</span><span>4h 17m 53s</span></div>
+              <div class="ev-card-row"><span>Classification</span><span>Declassified</span></div>
+            </div>
+            <div class="ev-card-status" style="color:#922b21;border-color:#922b21;">● Top Secret</div>
+          </div>
+          <button class="ev-card-btn">Open File →</button>
+        </div>
+
+        <!-- FILE 004 — SNAPSHOT ARCHIVE -->
+        <div class="ev-card" onclick="evOpen('004')">
+          <div class="ev-card-tab" style="background:#4a2878;">Snapshots</div>
+          <div class="ev-card-body">
+            <div class="ev-card-num">Evidence 004</div>
+            <div class="ev-card-title">Snapshot Archive</div>
+            <div class="ev-card-desc">Photographic Evidence.</div>
+            <div class="ev-card-meta">
+              <div class="ev-card-row"><span>Exhibits</span><span>6 on record</span></div>
+              <div class="ev-card-row"><span>Format</span><span>Screenshots / Photos</span></div>
+              <div class="ev-card-row"><span>Context</span><span>Partially lost</span></div>
+            </div>
+            <div class="ev-card-status" style="color:#9060c0;border-color:#9060c0;">● Archived</div>
+          </div>
+          <button class="ev-card-btn">Open File →</button>
+        </div>
+
+      </div><!-- /ev-grid -->
+    </div><!-- /ev-arch -->
+
+    <!-- ══════════════════════════════
+         EVIDENCE 001 — REACTION FILES
+         Warm amber · sticker board aesthetic
+    ══════════════════════════════ -->
+    <div id="ev-001" class="ev-view ev-bg-amber">
+      <button class="ev-back ev-back-amber" onclick="evClose()">← Back to Evidence Archive</button>
+
+      <!-- VAULT LANDING -->
+      <div class="ev-rx-landing">
+        <div class="ev-rx-eyebrow">Evidence 001 · Reactions Division</div>
+        <h2 class="ev-rx-title">Reaction Vault</h2>
+        <p class="ev-rx-sub">Classified reaction artifacts · Recovered 2023–2026</p>
+        <div class="ev-rx-rule"></div>
+        <div class="ev-rx-stats">
+          <div class="ev-rx-stat"><label>Status</label><span>🟡 Active</span></div>
+          <div class="ev-rx-stat"><label>Classification</label><span>Visual Evidence</span></div>
+          <div class="ev-rx-stat"><label>Integrity</label><span>100%</span></div>
+          <div class="ev-rx-stat"><label>Recovery Period</label><span>2023–2026</span></div>
+          <div class="ev-rx-stat"><label>Archive</label><span>Evidence 001</span></div>
+          <div class="ev-rx-stat"><label>Filter Status</label><span>Nonexistent</span></div>
+        </div>
+        <div class="ev-rx-rule2"></div>
+        <div class="ev-rx-count-bar">
+          <div class="ev-rx-count-num">36</div>
+          <div class="ev-rx-count-label">Archived Artifacts<br>Click any to open dossier</div>
+        </div>
+      </div>
+
+      <!-- ARTIFACT GRID -->
+      <div class="ev-rx-grid-wrap">
+        <div class="ev-rx-grid" id="ev-rx-grid"></div>
+        <div class="ev-rx-footer">Evidence 001 · Reaction Vault · 36 Archived Artifacts · Status: Active · Collection: Ongoing</div>
+      </div>
+
+    </div><!-- /ev-001 -->
+
+    <!-- REACTION DOSSIER MODAL -->
+    <div id="ev-rx-dossier">
+      <div class="ev-rx-dos-inner" id="ev-rx-dos-inner">
+        <div class="ev-rx-dos-top">
+          <div>
+            <div class="ev-rx-dos-badge" id="dos-num"></div>
+            <div class="ev-rx-dos-codename" id="dos-codename"></div>
+          </div>
+          <button class="ev-rx-dos-close" onclick="closeDossier()">✕</button>
+        </div>
+        <div class="ev-rx-dos-rule"></div>
+        <div class="ev-rx-dos-img"><img id="dos-img" src="" alt=""></div>
+        <div class="ev-rx-dos-meta">
+          <div class="ev-rx-dos-meta-row"><label>Classification</label><span id="dos-class"></span></div>
+          <div class="ev-rx-dos-meta-row"><label>Threat Level</label><span id="dos-threat"></span></div>
+          <div class="ev-rx-dos-meta-row"><label>Status</label><span id="dos-status"></span></div>
+          <div class="ev-rx-dos-meta-row"><label>Deployment</label><span id="dos-deploy"></span></div>
+          <div class="ev-rx-dos-meta-row"><label>Archive</label><span>Evidence 001 · Reaction Vault</span></div>
+        </div>
+        <div class="ev-rx-dos-notes">
+          <label>Field Notes</label>
+          <p id="dos-notes"></p>
+        </div>
+        <div class="ev-rx-dos-footer">
+          <div class="ev-rx-dos-nav">
+            <button class="ev-rx-dos-nav-btn" onclick="navDossier(-1)">← Prev</button>
+            <button class="ev-rx-dos-nav-btn" onclick="navDossier(1)">Next →</button>
+          </div>
+          <div class="ev-rx-dos-counter" id="dos-counter"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         EVIDENCE 003 — THE LORE
+         Green & warm · friendship timeline
+    ══════════════════════════════ -->
+    <div id="ev-002" class="ev-view ev-bg-forest">
+      <button class="ev-back ev-back-forest" onclick="evClose()">← Back to Evidence Archive</button>
+      <div class="ev-forest-head">
+        <div class="ev-forest-eyebrow">Evidence 002 · Historical Division</div>
+        <h2 class="ev-forest-title">The Lore<span class="ev-tm">™</span></h2>
+        <p class="ev-forest-sub">The complete friendship timeline · From the beginning</p>
+      </div>
+      <div class="ev-forest-body">
+
+        <div class="ev-lore-intro">A documentary about how two random classmates somehow ended up collecting years' worth of conversations, inside jokes, business ideas, and enough lore<span class="ev-tm">™</span> to confuse absolutely everyone else. The official record. Everything that happened, in the order it happened, as best as can be reconstructed given everyone's questionable memory.</div>
+
+        <div class="ev-timeline">
+
+          <!-- Chapter 0 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter 0 · Two Random Classmates</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🎬</span> December 2022</div>
+              <div class="ev-tl-status">Status: "Who even are you?"</div>
+              <div class="ev-tl-event">Every friendship has an origin story. Some begin through common interests. Some through a shared hobby.
+
+Ours started with a lab file. And normal stuff. Do I even need to remind you?
+
+The first chats were exactly what you'd expect during pre-board season.</div>
+              <div class="ev-tl-quote">"Lab file bhej de."</div>
+              <ul class="ev-tl-bullets">
+                <li>Lab files</li>
+                <li>Uniform confusion</li>
+                <li>Exam preparation</li>
+                <li>Roll numbers</li>
+                <li>Science discussions</li>
+                <li>Homework panic</li>
+              </ul>
+              <div class="ev-tl-event">Nothing extraordinary. Yet between those practical messages were tiny jokes. You teased me. You'd ask me something about what happened in class because I usually knew what the teachers had announced (maybe, Idk).
+
+And that prank which ended up with me saying <em>"BHUPPP OR BHAPPPP"</em> (I don't know which one is right 😅)
+
+At the time, it was just another school conversation.
+
+Looking back... it was Chapter One.</div>
+              <div class="ev-tl-note">Archive status: recovered · Context: surprisingly clear · Classification: foundational</div>
+            </div>
+          </div>
+
+          <!-- Chapter 1 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter I · From Classmate to Friend</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🌱</span> January – March 2023</div>
+              <div class="ev-tl-event">School was still the reason we talked. Almost every conversation had a purpose.
+
+Need notes? Need homework? Need to know what the teacher announced? Message.
+
+But slowly... the conversations stopped ending after the answer.
+
+One question somehow became five. Homework somehow became jokes.
+
+Without either of us noticing, we stopped texting because we <strong>needed</strong> something...
+
+and started texting because we were just bored.</div>
+              <div class="ev-tl-note">Exact turning point: unrecovered · Both parties confirm it happened</div>
+            </div>
+          </div>
+
+          <!-- Chapter 2 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter II · Comfort Update v1.0</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🌼</span> April – June 2023</div>
+              <div class="ev-tl-event">Nothing huge happened. And that's exactly why this chapter matters.
+
+There wasn't one dramatic moment where we suddenly became friends.
+
+Instead... it was hundreds of completely ordinary conversations. Questions. Homework. Random jokes. School complaints.
+
+The kind of moments that don't seem important until you look back years later.</div>
+              <div class="ev-tl-note">Significance: understated · Impact: total</div>
+            </div>
+          </div>
+
+          <!-- Chapter 3 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter III · The Classroom DLC</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">☀️</span> July – September 2023</div>
+              <div class="ev-tl-event">By now we already knew each other's personalities. (Which turned out to be completely wrong, when I see it today.)
+
+Who replied instantly. Who forgot things. Who'd probably know what happened in class.
+
+School was still the common setting... but definitely not the only topic anymore.</div>
+              <div class="ev-tl-note">First personality assessments on record · Both assessments: wildly inaccurate</div>
+            </div>
+          </div>
+
+          <!-- Chapter 4 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter IV · Friendship Becomes the Default</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🍂</span> October – December 2023</div>
+              <div class="ev-tl-event">By the end of the year, texting each other no longer needed a reason.
+
+Sometimes there was a reason. Sometimes there wasn't.
+
+Both worked equally well.</div>
+              <div class="ev-tl-note">Reason required to initiate conversation: none · Status: default mode activated</div>
+            </div>
+          </div>
+
+          <!-- Chapter 5 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter V · Welcome to Class 12</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">📚</span> January – March 2024</div>
+              <div class="ev-tl-event">Projects. Practicals. Tests. Teachers suddenly remembering that Boards existed.
+
+The chats somehow balanced between:</div>
+              <ul class="ev-tl-bullets">
+                <li>School panic</li>
+                <li>Random memes</li>
+                <li>Conversations that had absolutely nothing to do with either</li>
+              </ul>
+              <div class="ev-tl-note">Academic relevance of chats: declining · Chat frequency: increasing</div>
+            </div>
+          </div>
+
+          <!-- Chapter 6 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter VI · Randomness Starts Winning</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🌤</span> April – June 2024</div>
+              <div class="ev-tl-event">Ironically... the busier school became, the less we actually talked about school.
+
+One reel became twenty messages. One random thought became an hour-long discussion.
+
+The conversations were slowly becoming their own thing.</div>
+              <div class="ev-tl-note">School discussed: less · Everything else discussed: significantly more</div>
+            </div>
+          </div>
+
+          <!-- Chapter 7 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter VII · The Inside Joke Factory Opens</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🎭</span> July – September 2024</div>
+              <div class="ev-tl-event">This was where our own language<span class="ev-tm">™</span> started forming.
+
+References. Callbacks. Running jokes.
+
+The type of conversations where someone else would ask:</div>
+              <div class="ev-tl-quote">"What are you two even talking about?"</div>
+              <div class="ev-tl-event">And somehow... we'd both understand perfectly.</div>
+              <div class="ev-tl-note">The Lore™ begins here · External comprehension: 0% · Internal comprehension: total</div>
+            </div>
+          </div>
+
+          <!-- Chapter 8 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter VIII · The Calm Before the Boards</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🍁</span> October – December 2024</div>
+              <div class="ev-tl-event">Everyone around us was preparing for Class 12 Boards.
+
+Meanwhile... our chats somehow managed to include everything except studying.
+
+Talking itself had quietly become the reason we talked.</div>
+              <div class="ev-tl-note">Studying discussed: none · Topics covered: everything else</div>
+            </div>
+          </div>
+
+          <!-- Chapter 9 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter IX · The Everyday Era</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🚀</span> January 2025</div>
+              <div class="ev-tl-event">Something changed.
+
+The conversations became longer. More frequent. You didn't need a reason anymore.
+
+A meme became a conversation. A random shower thought somehow became an hour-long discussion. One message could somehow lead to five different topics.
+
+Without realising it... chatting had quietly become part of my everyday life.</div>
+              <div class="ev-tl-note">Conversations per day: increasing · Average length: unknowable · Reason required: none</div>
+            </div>
+          </div>
+
+          <!-- Chapter 10 — THE BLACKOUT -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker ev-tl-marker-red"></div>
+            <div class="ev-tl-content ev-tl-redacted">
+              <div class="ev-tl-era">Chapter X · The Great Blackout of 2025</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🌑</span> February 2025</div>
+              <div class="ev-tl-status">⚠ Incident on record · This chapter is part of The Lore™. Permanently.</div>
+              <div class="ev-tl-event">Every friendship has that one chapter. This was ours.
+
+Up until <strong>16 February 2025</strong>, everything was perfectly normal.
+
+Then... Nitya looked at both Instagram <em>and</em> WhatsApp...
+
+...and apparently thought:</div>
+              <div class="ev-tl-quote" style="border-left-color:#8b3a1e;color:#c05040;">"Why block him on one platform when I can be efficient?"</div>
+              <div class="ev-tl-event">So she blocked me. On both. Overachiever behaviour, honestly.
+
+One moment we were talking. The next moment...
+
+<strong>I had successfully lost access to 100% of the available communication channels.</strong>
+
+That's what I call commitment.
+
+For a while, the story just... stopped.
+
+<em>Looking back now, I understand why it happened. Back then? I was far too busy wondering how I'd managed to get blocked on both platforms.</em>
+
+I genuinely had no idea what had happened. So naturally...
+
+I contacted <strong>Aadya Jha</strong>. I contacted <strong>Paridhi</strong>. Both of them reassured me that you were okay... and both of them very strongly advised me <strong>not</strong> to go to your house.
+
+Because yes... my brilliantly thought-out backup plan at the time was:</div>
+              <div class="ev-tl-quote" style="border-left-color:#8b3a1e;color:#c05040;">"Fine. I'll just go to her house and ask what happened."</div>
+              <div class="ev-tl-event">Thankfully... they talked some sense into me.
+
+About a month later, someone decided that maybe permanently exiling me from the internet was a little excessive.
+
+Communication slowly came back. The friendship resumed.
+
+And somehow... this whole incident went from being one of the most stressful chapters... to becoming one of the most unforgettable ones.
+
+Still... consider this your annual reminder that <strong>you blocked me on both platforms.</strong>
+
+I'm never letting you forget that.</div>
+              <div class="ev-tl-note">Platforms blocked: 2 of 2 (100%) · Backup plan viability: 0% · This is officially The Lore™ now · File: permanently open</div>
+            </div>
+          </div>
+
+          <!-- Chapter 11 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter XI · Resume From Last Save</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🌅</span> March 2025</div>
+              <div class="ev-tl-event">Almost a month later... on <strong>11 March 2025</strong>... we're finally back on WhatsApp!!!!
+
+No dramatic speech. No movie scene. Just... a message.
+
+Eventually, Instagram came back too.
+
+Surprisingly, it didn't take very long for things to feel normal again.
+
+The conversations slowly slipped back into their usual rhythm — almost as if the story had been paused rather than ended.</div>
+              <div class="ev-tl-note">Save file: successfully loaded · All channels: restored · Time to resume normal: surprisingly short</div>
+            </div>
+          </div>
+
+          <!-- Chapter 12 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter XII · Like Nothing Happened</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🌸</span> April 2025</div>
+              <div class="ev-tl-event">This month felt almost surreal. The block became history. The conversations didn't carry resentment.
+
+Instead... they somehow became even longer than before.
+
+This was where texting started feeling less like messaging...
+
+and more like hanging out digitally.
+
+One topic became five. One joke created another. Random conversations became the best conversations.</div>
+              <div class="ev-tl-note">Resentment carried forward: none · Conversation length: record highs</div>
+            </div>
+          </div>
+
+          <!-- Chapter 13 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter XIII · Building The Lore<span class="ev-tm">™</span></div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">☀️</span> May 2025</div>
+              <div class="ev-tl-event">Every friendship reaches a point where others stop understanding it. This was ours.
+
+Inside jokes multiplied. References started appearing. Entire conversations could revolve around something that happened weeks earlier.
+
+Someone reading our chats for the first time would've had absolutely no idea what was happening.
+
+We did.
+
+Congratulations. The Lore<span class="ev-tm">™</span> had officially begun.</div>
+              <div class="ev-tl-note">External comprehension: 0% · Internal comprehension: total · The Lore™: officially operational</div>
+            </div>
+          </div>
+
+          <!-- Chapter 14 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter XIV · The Rabbit Holes</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🌌</span> June 2025</div>
+              <div class="ev-tl-event">This was where conversations stopped following rules.
+
+One minute... history. Five minutes later... business ideas. Then Assassin's Creed. Then politics. Then AI. Then some completely unnecessary invention that somehow sounded brilliant at 2 AM.
+
+Neither of us stayed on topic.
+
+And somehow... that became the topic.</div>
+              <div class="ev-tl-note">Topics covered per conversation: uncountable · Average tangent depth: uncharted</div>
+            </div>
+          </div>
+
+          <!-- Chapter 15 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter XV · Welcome to Chaos</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🎭</span> July 2025</div>
+              <div class="ev-tl-event">By now... the friendship wasn't just between the two of us anymore.
+
+It spilled into group chats. People naturally involved both of us. Friends assumed we'd know what the other was doing.
+
+Voice notes became common. Stories became longer. Business ideas became increasingly ridiculous (from other's POV — I'm still in).
+
+The conversations evolved from texting... to full-blown episodes of TMKOC.</div>
+              <div class="ev-tl-note">Chaos level: maximum · Business ideas: ongoing · Third-party comprehension: nonexistent</div>
+            </div>
+          </div>
+
+          <!-- Chapter 16 -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker"></div>
+            <div class="ev-tl-content">
+              <div class="ev-tl-era">Chapter XVI · The Golden Age</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🎤</span> August – December 2025</div>
+              <div class="ev-tl-event">If someone wanted to understand our friendship... this is probably where I'd point them.
+
+This period had everything:</div>
+              <ul class="ev-tl-bullets">
+                <li>Ridiculous startup ideas</li>
+                <li>Fake businesses</li>
+                <li>Random midnight yapping</li>
+                <li>Voice notes</li>
+                <li>Callbacks to months-old jokes</li>
+                <li>"Tea"</li>
+                <li>Memes</li>
+                <li>Unnecessarily detailed stories</li>
+                <li>Absolute chaos</li>
+              </ul>
+              <div class="ev-tl-event">By now... we didn't really have conversations anymore.
+
+We had episodes.</div>
+              <div class="ev-tl-note">Conversations: discontinued · Episodes: ongoing · Golden Age status: confirmed</div>
+            </div>
+          </div>
+
+          <!-- Chapter 17 — ongoing -->
+          <div class="ev-tl-entry">
+            <div class="ev-tl-marker ev-tl-marker-open"></div>
+            <div class="ev-tl-content ev-tl-open">
+              <div class="ev-tl-era">Chapter XVII · A Shared Universe</div>
+              <div class="ev-tl-date"><span class="ev-tl-date-emoji">🌠</span> 2026 — ongoing</div>
+              <div class="ev-tl-status">Archive status: open · Still being written</div>
+              <div class="ev-tl-event">Years after that first</div>
+              <div class="ev-tl-quote">"Lab file bhej de."</div>
+              <div class="ev-tl-event">the friendship had built its own universe.
+
+A single emoji could reference something from months ago. A random phrase could unlock an entire conversation. Someone reading the chats would think half the context was missing.
+
+It wasn't.
+
+The context wasn't in the chats anymore. It had become part of the friendship itself.
+
+And somehow... the story is still being written.</div>
+              <div class="ev-tl-note">The Lore™: living document · Last updated: whenever you last talked · End date: none projected</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="ev-forest-footer">Evidence 002 · The Lore™ · Status: Living Document · Classification: Foundational</div>
+      </div>
+    </div><!-- /ev-002 -->
+
+    <!-- ══════════════════════════════
+         EVIDENCE 004 — CASE FILE #014
+         Dark military · full transcript
+    ══════════════════════════════ -->
+    <!-- ══════════════════════════════
+         EVIDENCE 004 — CASE FILE #014
+         Operation: Midnight Escalation
+         Real recovered transcript.
+    ══════════════════════════════ -->
+    <div id="ev-003" class="ev-view ev-bg-dark">
+      <button class="ev-back" onclick="evClose()">← Back to Evidence Archive</button>
+
+      <!-- COVER PAGE -->
+      <div class="ev-dos-cover">
+        <div class="ev-dos-seal">⚖</div>
+        <div class="ev-dos-eye">Top Secret · Declassified 2026</div>
+        <div class="ev-dos-cnum">Case File #014 · Evidence 003</div>
+        <h2 class="ev-dos-title">Operation:<br>Midnight Escalation</h2>
+        <div class="ev-dos-rule"></div>
+        <div class="ev-dos-grid">
+          <div><label>Agents</label><span>Shubh &amp; Nitya</span></div>
+          <div><label>Duration</label><span>00:36 → 01:23</span></div>
+          <div><label>Started with</label><span>NTA complaints</span></div>
+          <div><label>Escalated to</label><span>Nuclear warfare</span></div>
+          <div><label>Duck threats issued</label><span>3 (confirmed)</span></div>
+          <div><label>Classification</label><span>Declassified</span></div>
+        </div>
+        <div class="ev-warn-stamp">Unauthorized Reading Prohibited</div>
+        <div class="ev-scroll-hint">↓ scroll to open file ↓</div>
+      </div>
+
+      <!-- CASE SUMMARY PAGE -->
+      <div class="ev-case-summary">
+        <div class="ev-cs-header">
+          <div class="ev-cs-classification">Top Secret · Declassified 2026</div>
+          <div class="ev-cs-status">Status: DECLASSIFIED · Recovered Communication Log</div>
+          <div class="ev-cs-main-title">CASE FILE #014<br>OPERATION: MIDNIGHT ESCALATION</div>
+          <div class="ev-cs-subtitle">CLASSIFICATION: TOP SECRET</div>
+        </div>
+
+        <div class="ev-cs-section-title">Case Summary</div>
+        <div class="ev-cs-grid">
+          <div class="ev-cs-field"><label>Date</label><div class="ev-csv">20 March 2025 → 21 March 2025</div></div>
+          <div class="ev-cs-field"><label>Conversation Started</label><div class="ev-csv">10:06 PM</div></div>
+          <div class="ev-cs-field"><label>Main Incident Began</label><div class="ev-csv">12:36 AM</div></div>
+          <div class="ev-cs-field"><label>Conversation Ended</label><div class="ev-csv">1:23 AM</div></div>
+          <div class="ev-cs-field"><label>Total Duration</label><div class="ev-csv">3 Hours 17 Minutes</div></div>
+          <div class="ev-cs-field"><label>Recovered Messages</label><div class="ev-csv-r">248</div></div>
+          <div class="ev-cs-field"><label>Primary Subject A</label><div class="ev-csv">Agent SHUBH</div></div>
+          <div class="ev-cs-field"><label>Primary Subject B</label><div class="ev-csv">Agent NITYA</div></div>
+          <div class="ev-cs-field"><label>Evidence Status</label><div class="ev-csv">COMPLETE TRANSCRIPT</div></div>
+          <div class="ev-cs-field"><label>Classification</label><div class="ev-csv">TOP SECRET</div></div>
+        </div>
+
+        <div class="ev-cs-section-title">Incident Report</div>
+        <div class="ev-cs-body">At approximately 22:06 IST, two classmates initiated what appeared to be a perfectly ordinary conversation. For the next 2 hours and 30 minutes, the discussion remained relatively stable, revolving around academics, school, engineering, medicine, exams, and the usual day-to-day topics.</div>
+        <div class="ev-cs-body">At exactly 00:36 IST, investigators recorded the final coherent statement before the conversation entered an unrecoverable state:</div>
+        <div style="background:#fff;border-left:3px solid #922b21;padding:14px 20px;margin-bottom:16px;font-family:'Courier Prime',monospace;font-size:13px;color:#1e1510;font-style:italic;">"Divided by Maths and Bio. United through Physics, Chemistry and abusing NTA."</div>
+        <div class="ev-cs-body">From this point onward, conversation stability rapidly deteriorated. Within the next 47 minutes, the discussion expanded to include:</div>
+        <ul class="ev-cs-bullet-list">
+          <li>MLA Elections</li>
+          <li>Hungry Ducks</li>
+          <li>Natural Selection</li>
+          <li>Online Flower Business</li>
+          <li>Funeral Business</li>
+          <li>Omni</li>
+          <li>Titanium Armour</li>
+          <li>Thoracic Vertebrae</li>
+          <li>Kitchen Warfare</li>
+          <li>Bunkers</li>
+          <li>Hackers</li>
+          <li>Satellites</li>
+          <li>Nuclear Weapons</li>
+          <li>ISRO</li>
+          <li>Volcanoes</li>
+          <li>Mariana Trench</li>
+          <li>Brain-Eating Amoeba</li>
+          <li>MRI Machines</li>
+          <li>Propofol</li>
+          <li>Pikachu</li>
+        </ul>
+        <div class="ev-cs-body">No successful attempts to restore the original topic were observed.</div>
+
+        <div class="ev-cs-section-title">Conversation Stability</div>
+        <div class="ev-cs-stability">
+          <div class="ev-cs-stability-row">
+            <span class="ev-cs-stability-time">22:06</span>
+            <div class="ev-cs-stability-bar"></div>
+            <span class="ev-cs-stability-label">Stable</span>
+          </div>
+          <div class="ev-cs-stability-row ev-cs-warning-row" style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#922b21;text-align:left;padding:10px 0;border-bottom:1px dotted #e0d8c4;">
+            <span class="ev-cs-stability-time">00:36</span>
+            <span style="color:#922b21;font-size:13px;">⚠ Conversation Integrity Lost</span>
+          </div>
+          <div class="ev-cs-stability-row">
+            <span class="ev-cs-stability-time">01:23</span>
+            <div class="ev-cs-stability-bar closed"></div>
+            <span class="ev-cs-stability-label">Case Closed</span>
+          </div>
+        </div>
+
+        <div class="ev-cs-section-title">Warning</div>
+        <div class="ev-cs-body">The following pages contain the complete recovered communication log.</div>
+        <div style="background:#fff;border:1px solid #cfc3a5;padding:16px 20px;margin-bottom:16px;font-family:'Courier Prime',monospace;font-size:12px;color:#4a3828;">
+          <div style="margin-bottom:6px;"><strong>Recovered Messages:</strong> 248</div>
+          <div style="margin-bottom:6px;">No alterations have been made to the conversation.</div>
+          <div style="margin-bottom:6px;">Formatting has been modified solely for archival purposes.</div>
+          <div style="margin-bottom:6px;">Conversation coherence after 00:36 IST cannot be guaranteed.</div>
+          <div style="color:#922b21;font-weight:700;">Reader discretion is advised.</div>
+        </div>
+
+        <div class="ev-cs-footer">
+          Recovered Communication Log · The complete 248-message transcript begins below<br>
+          Every message has been preserved exactly as recovered
+        </div>
+      </div>
+
+      <!-- INCIDENT REPORT -->
+      <div class="ev-ir">
+        <div class="ev-ir-badge">Incident Report · Classified Division</div>
+        <div class="ev-ir-title">Official Record of Events: Operation Midnight Escalation</div>
+        <div class="ev-ir-grid">
+          <div class="ev-ir-field"><label>Opened with</label><div class="v">NTA grievances &amp; MLA ambitions</div></div>
+          <div class="ev-ir-field"><label>Escalated via</label><div class="v">Duck threats (hungry → hangry)</div></div>
+          <div class="ev-ir-field"><label>Peak threat level</label><div class="v">Nuclear warheads + ICBM</div></div>
+          <div class="ev-ir-field"><label>Resolution</label><div class="v">Existential crisis → goodnight</div></div>
+          <div class="ev-ir-field"><label>Messages recovered</label><div class="vb">248</div></div>
+          <div class="ev-ir-field"><label>Filter status</label><div class="v">Lost. Permanently.</div></div>
+          <div class="ev-ir-field"><label>Side businesses discussed</label><div class="v">Online flowers, funeral &amp; omni</div></div>
+          <div class="ev-ir-field"><label>Shubhratri said</label><div class="v">Once. Earned.</div></div>
+        </div>
+        <div class="ev-ir-notes">
+          FINDING: What began as a shared hatred of NTA and an MLA campaign proposal escalated through duck threats, anatomical insults, bunker architecture, hacked satellites, nuclear warheads, ISRO payload execution, brain-eating amoeba, propofol overdose, and MRI-based elimination — before arriving at the conclusion that they should simply call each other to fool around.<br><br>
+          ANALYST NOTE: The escalation was bilateral. Neither party showed signs of de-escalation intent until Agent Nitya initiated an existential crisis review at 01:00. Both parties confirmed this was fine.<br><br>
+          CLASSIFICATION NOTE: "Chashme ka dabba" incident remains officially unacknowledged by Agent Nitya. File stays open.
+        </div>
+      </div>
+
+      <!-- WARNING PAGE -->
+      <div class="ev-warn-pg">
+        <div class="ev-warn-title">⚠ Warning ⚠</div>
+        <div class="ev-warn-rule"></div>
+        <div class="ev-warn-body">
+          The following transcript contains: duck threats, thoracic vertebrae, pericardial fluid, brain-eating amoeba, nuclear ICBMs, propofol, MRI physics, and an ISRO payload.<br><br>
+          No animals were harmed. Probably. The chicken was hypothetical.<br><br>
+          Context has been partially preserved. Filter has not.
+        </div>
+        <div class="ev-warn-rule"></div>
+        <div style="font-family:'Special Elite',monospace;font-size:9px;letter-spacing:3px;color:#4a2020;text-transform:uppercase;">End of Warning · Begin Transcript</div>
+      </div>
+
+      <!-- RECOVERED COMMUNICATION LOG HEADER -->
+      <div style="background:#f5f0e4;padding:48px clamp(24px,6vw,80px) 0;max-width:820px;margin:0 auto;font-family:'Courier Prime',monospace;">
+        <div style="border:2px solid #4a3828;padding:24px 28px;margin-bottom:0;">
+          <div style="font-size:8px;letter-spacing:4px;color:#922b21;text-transform:uppercase;margin-bottom:12px;">Recovered Communication Log</div>
+          <div style="font-family:'Playfair Display',serif;font-size:clamp(18px,3.5vw,26px);color:#1e1510;margin-bottom:16px;line-height:1.3;">The complete 248-message transcript begins below.<br>Every message has been preserved exactly as recovered.</div>
+          <div style="border-top:1px solid #cfc3a5;padding-top:14px;font-size:11px;color:#7a6550;line-height:1.8;">
+            (Entire transcript here.) — <em>248 messages · 20–21 March 2025 · 22:06 to 01:23 IST</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSCRIPT -->
+      <div class="ev-tx">
+        <div class="ev-tx-head">
+          <span class="ev-tx-ht">Recovered Transcript · Case File #014 · Operation: Midnight Escalation</span>
+          <span class="ev-tx-hm">00:36 → 01:23</span>
+        </div>
+        <div class="ev-tx-body">
+
+          <!-- CHAPTER BREAK -->
+          <div class="ev-tx-chapter">Chapter I · Side Businesses &amp; Pockets · 00:36–00:40</div>
+
+          <div class="ev-te"><span class="ev-ts">00:36</span><span class="ev-who">Agent Shubh</span><div class="ev-tb">"Divided by maths and bio. United through Physics, Chemistry and abusing NTA."</div></div>
+          <div class="ev-te ev-r"><span class="ev-ts">00:36</span><span class="ev-who">Agent Nitya</span><div class="ev-tb">"YES."</div></div>
+          <div class="ev-te"><div class="ev-tb">"I should run for MLA in next elections"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"go ahead"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Paisa provide karein please"<br><span style="opacity:.5;font-size:13px;">"Because 404 money not found in. My pocket"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"i'll free hungry ducks in the rallies of the opposition / so naturally, you'll win / by natural selection ;)"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb" style="font-style:italic;opacity:.7;">"jokes on you, i don't even have a pocket"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"vo hmare side business se aaiga na.. / online flower"<br><span style="opacity:.6;font-size:13px;">"and funeral"</span><br><span style="opacity:.6;font-size:13px;">"and now omni"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"The best one is this one / The most original and random of all time"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"flower vala bhi / vo Pehle aaya tha"</div></div>
+          <div class="ev-te"><div class="ev-tb">"I don't remember the sequence"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Wallet aka / Chashme ka dabba"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"shut up, u didn't see anything"</div></div>
+          <div class="ev-te"><div class="ev-tb">"I did but i didn't / Did I??"</div></div>
+
+          <div class="ev-tx-chapter">Chapter II · Duck Threats Escalation · 00:40–00:45</div>
+
+          <div class="ev-te ev-r"><span class="ev-ts">00:40</span><div class="ev-tb">"and fyi, usme ab bs meri watch rkhi rehti hai don't ask why"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Why??"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"ask once more and may a hungry duck find its way to you"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Okay no problem"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Bro tere bagal me baitha tha jab ujju tere se chheenne ki koshish kar raha tha"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"bruh"<br><span style="opacity:.6;font-size:13px;">"ik idiot"</span><br><span style="opacity:.6;font-size:13px;">"i was playing along"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"Ohh"<br><span style="opacity:.6;font-size:13px;">"I have contingency plans"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"Tere sath rehne ka asar ho raha hai"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"see this could be worse"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Try / This is getting interesting"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"i can be a HANGRY one instead of a hungry"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Wasn't a bad one / I expected better from you"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"and you don't ever, and i mean EVER wanna face off a HANGRY duck"<br><span style="opacity:.6;font-size:13px;">"perhaps my duck threats collection is depleted 🤷🏻‍♀️"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">[stabby stab stab sticker deployed]</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"this works?"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Im gonna turn off my filter for this text / I can literally snap the duck's neck / And i can wear titanium armor / Aage bol"</div></div>
+
+          <div class="ev-tx-chapter">Chapter III · Anatomical Threats &amp; Bunker Defense · 00:45–00:51</div>
+
+          <div class="ev-te ev-r"><span class="ev-ts">00:45</span><div class="ev-tb">"and i can feed that broken thoracic vertebra to you"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Other thing kept aside this one is cute"</div></div>
+          <div class="ev-te"><div class="ev-tb">"You are starting to get there"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"or maybe add that pericardial fluid in your food"</div></div>
+          <div class="ev-te"><div class="ev-tb">"You can do it / I can simply cook my own food / Khane se aage aa"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"i am, aren't i :)"<br><span style="opacity:.6;font-size:13px;">"vo khana hi tujhe aage le aiga :)"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"okay we goin nasty now? / i need to think"</div></div>
+          <div class="ev-te"><div class="ev-tb">"No you can't / I can add laser security / In my kitchen"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"i can blast the whole kitchen / with a chicken inside it / but lets not involve animals here"</div></div>
+          <div class="ev-te"><div class="ev-tb">"I can have my kitchen in a bunker"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"the bunker can get infested with slugs / maggots / okay ew."</div></div>
+          <div class="ev-te"><div class="ev-tb">"No if i use laser in the air vents / Or the better one"<br><span style="opacity:.6;font-size:13px;">"I can use air scrubbers and air recirculation system in the bunker"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"air can be toxic"<br><span style="opacity:.6;font-size:13px;">"your kitchen water can cultivate brain eating amoeba"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"Isopropyl alcohol is a must in my inventory / Circulation system bro / Air scrubbers ??"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"gosh / you are prepared / damn"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Im not / Sab on spot hai"<br><span style="opacity:.6;font-size:13px;">"Any more ideas??"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"toxicity ki baad ho rhi hai / remember, YOU'RE TOXIC BRO"</div></div>
+
+          <div class="ev-tx-chapter">Chapter IV · Nuclear Warfare &amp; Device Hacking · 00:51–00:57</div>
+
+          <div class="ev-te ev-r"><span class="ev-ts">00:51</span><div class="ev-tb">"you know what, i'll lure you out of that damn basement even if i had to use witchcraft to bring back Mr. Adolf himself, and i know you would not miss the chance to talk to him so.."<br><span style="opacity:.65;font-size:13px;">"and at some point, you'll run outta food"</span><br><span style="opacity:.65;font-size:13px;">"i'll have someone unlock your devices and stuff so the chat can be leaked"</span><br><span style="opacity:.65;font-size:13px;">"or maybe i can simply lure you out using the bribe of seeing real bone set"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"Dont worry i will have some nuclear bombs on standby / And have made sure some satellites are hacked / If anything happens to me then the missile with nuclear warhead will be launched / Taking out Hitler for the second time too"</div></div>
+          <div class="ev-te"><div class="ev-tb">"I will take it out of a new murdered criminal"<br><span style="opacity:.5;font-size:13px;">"This was the best one until now"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"sir, there won't be an 'I' after all the stuff 😭"</div></div>
+          <div class="ev-te"><div class="ev-tb">"This was really good one / But for that you'll need access to my device which you won't have even in dreams"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"i can have someone do that / maybe hacker 🤷🏻‍♀️"</div></div>
+          <div class="ev-te"><div class="ev-tb">"What if i hack the hacker then reverse blackmail him"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"sir, what if ke game pr mat jao"<br><span style="opacity:.65;font-size:13px;">"or i'll bribe you using the unreleased Interstellar sequel movie"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"AISO TO WHAT IF I BECOME THE FUCKING HACKER / BRUHHH"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Best: release your search history and chats (against my ethics but will do if you cross that dark line)"</div></div>
+          <div class="ev-te"><div class="ev-tb">"I'll have remote system which i will be using through the bunker"</div></div>
+
+          <div class="ev-tx-chapter">Chapter V · Existential Crisis &amp; Ballistic Missiles · 00:57–01:06</div>
+
+          <div class="ev-te ev-r"><span class="ev-ts">00:57</span><div class="ev-tb">"all i asked was for you to not ask me the ques"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Then believe me it will be your worst nightmare if you make an enemy out of me / Because I'm ruthless when I'm hurt"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"why are there / nukes / bunker / adolf / witchery / hacking / satellite / movies / footage / bones / like bruhhhh"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"who hurt you 😭"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Not the point"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"that's the fucking ques / WHY ARE WE ENEMIES"<br><span style="opacity:.7;font-size:14px;font-weight:600;">"WHY AREN'T WE TEAMING UP AGAINST OTHERS??????"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"WHAT HAPPENED TO OUR BUSINESSESSSS / vhi to puch rhi hu"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Nothing when things get to normal / If they get to normal / Then business maze me chalayege"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"now imma go thru an existential crisis and force you to do the same"</div></div>
+          <div class="ev-te"><div class="ev-tb">"You know lemme give you a very easy solution"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"wut"<br><span style="opacity:.6;font-size:13px;">"IT BETTER NOT BE SOME DUMBASS DAILY STUFF"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"It is and it isn't"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"kya hai bta na"</div></div>
+          <div class="ev-te"><div class="ev-tb">"When none of the above happened"<br>"You can just call me to fool around, get me to a nuclear site or missile site"<br>"Sedate me and put me alongside the warheads"<br>"And launch it"<br>"Make sure the missiles are ICBMs"<br><span style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#922b21;">INTER CONTINENTAL BALLISTIC MISSILE</span></div></div>
+
+          <div class="ev-tx-chapter">Chapter VI · Morbid Limits · 01:06–01:19</div>
+
+          <div class="ev-te ev-r"><span class="ev-ts">01:06</span><div class="ev-tb">"so you're telling me that / i asked you to do ONE thing which you didn't / we went back and forth with destructive ideas / to have an existential crisis / to what? / to SIMPLY JUST CALL YOU TO FOOL AROUND / and JUST WHY / WHY DID WE WENT THRU THIS"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Best part / I might even die just because of high G force / As this thing has speeds of around mach 7"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Isro ke kisi rocket ke payload ke sath mujhe pack kar de / Then jab woh launch hoga / Kuchh sec me i'll die as those have min speeds of 8km/s / Assuming i survive / And you are not idiot aka harshika, You will not provide any spacesuit / So i'll be in vacuum without a suit"</div></div>
+          <div class="ev-te"><div class="ev-tb">"I don't know"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"or i can simply throw you into a volcano / an active one / or in the middle of the Mariana trench / without life support"</div></div>
+          <div class="ev-te"><div class="ev-tb">"You will call me to fool around and what makes you think that i will go to or even near a volcano with anyone"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"or inject brain eating amoeba into you"</div></div>
+          <div class="ev-te"><div class="ev-tb">"That was also a nice one"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"or make you eat some 'cookies' i made that will OBV have anaesthesia in it, you'll be knocked out / then i can end you in a hell lot of ways"</div></div>
+          <div class="ev-te"><div class="ev-tb">"But for that i need to be busy ya fir mujhe kisi interesting jagah le jaana hoga"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Believe me mere pe sedative ka asar nahi hota / And high doses pe bhi boho der se act karta hai"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"overdose of propofol maybe"<br><span style="opacity:.65;font-size:13px;">"MJ overdosed on it / this is used in surgeries / usually knocks ppl out in 15 sec"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"By that time you'll be long dead as I'll realise what is going on"<br><span style="opacity:.6;font-size:13px;">"Nice one again"</span><br><span style="opacity:.6;font-size:13px;">"Mj?? Or CPH4 / Painful bhi hoga"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"Michael jackson"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"or i can take you — the knocked out shubh, put you inside a MRI and make you wear some iron stuff / :) / gone / woosh"</div></div>
+          <div class="ev-te"><div class="ev-tb">"This one i didn't think about / Nice one / I like this mess!!"<br><span style="opacity:.5;font-size:13px;">"My soul from hell"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"MRI have STRONG magnetic field / even a safety pin can be lethal"<br><span style="opacity:.65;font-size:13px;">"befriended other soul from idk where (talking about me)"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"Bro engineers built it / I know / It also works under liquid nitrogen as a coolant / And it is never actually turned off"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"ik, hard to miss that fact"<br><span style="opacity:.65;font-size:13px;">"ohh / that thing moves and it moves fast / the machine"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"anyways / so we done being morbid? / ya fir kuch reh gya"</div></div>
+          <div class="ev-te"><div class="ev-tb">"I don't think so"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"also is your filter up yet? / ya abhi bhi unfiltered?"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Unfortunately my filter is lost"</div></div>
+
+          <div class="ev-tx-chapter">Chapter VII · Wrapping Up &amp; Shubhratri · 01:20–01:23</div>
+
+          <div class="ev-te"><span class="ev-ts">01:20</span><div class="ev-tb">"Oye kisi din jha se agar tu mile toh ye wali chats padha diyo use"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"kyu? / trauma add krna hai uska?"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Yup"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"great / too bad"<br><span style="opacity:.65;font-size:13px;">"imma dlt these so mummy ko pta na chale ki mai jgi hui thi"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"Mai Shrivastava ko bhejun toh chalega?? / Last wala part ofc / Without your name"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"okay but send me her reply / wanna see"<br><span style="opacity:.65;font-size:13px;">"if you can"</span></div></div>
+          <div class="ev-te"><div class="ev-tb">"Okh / You got it"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Aapki night good ho / And soo jaa (i know you wont but still)"<br><span style="opacity:.5;font-size:12px;">"Pikachu insists"</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"vaise kya likh kr bhejega? hehe"<br><span style="opacity:.75;font-size:15px;font-weight:600;">SHUBHratri :)</span></div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"pikachu denied"</div></div>
+          <div class="ev-te"><div class="ev-tb">"No he didn't"</div></div>
+          <div class="ev-te ev-r"><div class="ev-tb">"now i insist"</div></div>
+          <div class="ev-te"><div class="ev-tb">"Good night"</div></div>
+
+          <div class="ev-tx-end">End of Recovered Log · Case File #014 · Operation: Midnight Escalation</div>
+        </div>
+      </div>
+
+      <!-- CASE CLOSED -->
+      <div class="ev-case-closed">
+        <div style="font-family:'Special Elite',monospace;font-size:9px;letter-spacing:4px;color:#5c3d22;text-transform:uppercase;margin-bottom:32px;">End of Recovered Log · Case File #014 · Operation: Midnight Escalation</div>
+        <div class="ev-cc-stamp">Case Closed</div>
+        <div style="margin:24px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;max-width:600px;">
+          <div style="text-align:center;border:1px solid #3d2b1a;padding:14px;border-radius:2px;">
+            <div style="font-family:'Special Elite',monospace;font-size:8px;letter-spacing:2px;color:#5c3d22;text-transform:uppercase;margin-bottom:6px;">Conversation Started</div>
+            <div style="font-family:'Courier Prime',monospace;font-size:13px;color:#c9a84c;">22:06 IST</div>
+          </div>
+          <div style="text-align:center;border:1px solid #3d2b1a;padding:14px;border-radius:2px;">
+            <div style="font-family:'Special Elite',monospace;font-size:8px;letter-spacing:2px;color:#5c3d22;text-transform:uppercase;margin-bottom:6px;">Main Incident</div>
+            <div style="font-family:'Courier Prime',monospace;font-size:13px;color:#c9a84c;">00:36 IST</div>
+          </div>
+          <div style="text-align:center;border:1px solid #3d2b1a;padding:14px;border-radius:2px;">
+            <div style="font-family:'Special Elite',monospace;font-size:8px;letter-spacing:2px;color:#5c3d22;text-transform:uppercase;margin-bottom:6px;">Conversation Ended</div>
+            <div style="font-family:'Courier Prime',monospace;font-size:13px;color:#c9a84c;">01:23 IST</div>
+          </div>
+          <div style="text-align:center;border:1px solid #3d2b1a;padding:14px;border-radius:2px;">
+            <div style="font-family:'Special Elite',monospace;font-size:8px;letter-spacing:2px;color:#5c3d22;text-transform:uppercase;margin-bottom:6px;">Recovered Messages</div>
+            <div style="font-family:'Courier Prime',monospace;font-size:18px;color:#922b21;font-weight:700;">248</div>
+          </div>
+        </div>
+        <div style="font-family:'Special Elite',monospace;font-size:9px;letter-spacing:3px;color:#922b21;text-transform:uppercase;border:1px solid #922b21;display:inline-block;padding:6px 18px;border-radius:2px;margin-bottom:24px;">Operation Status: Successfully Archived</div>
+        <div class="ev-cc-meta">
+          Case File #014 · Operation: Midnight Escalation<br>
+          Agents: Shubh &amp; Nitya · Duration: 00:36 → 01:23<br>
+          Started: NTA complaints &amp; MLA ambitions<br>
+          Escalated via: duck threats → thoracic vertebrae → bunker → nukes → ICBM → ISRO payload → MRI<br>
+          Resolution: "Good night"<br>
+          Filter status: permanently lost · Filed: 2026
+        </div>
+        <div style="font-family:'Lora',serif;font-style:italic;font-size:14px;color:#5c3d22;margin-top:28px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8;">
+          This conversation has been preserved as evidence<br>because some memories deserve more than screenshots.
+        </div>
+      </div>
+    </div><!-- /ev-003 -->
+
+    <!-- ══════════════════════════════
+         EVIDENCE 005 — SNAPSHOT ARCHIVE
+         Purple · tilted photo gallery
+    ══════════════════════════════ -->
+    <div id="ev-004" class="ev-view ev-bg-purple">
+      <button class="ev-back ev-back-purple" onclick="evClose()">← Back to Evidence Archive</button>
+      <div class="ev-snap-head">
+        <div class="ev-snap-eyebrow">Evidence 004 · Visual Division</div>
+        <h2 class="ev-snap-title">Snapshot Archive</h2>
+        <p class="ev-snap-sub">Photographic Evidence · 6 Exhibits on Record</p>
+      </div>
+      <div class="ev-snap-grid">
+
+        <div class="ev-snap-item">
+          <div class="ev-snap-washi" style="top:-10px;left:26%;width:58px;"></div>
+          <div class="ev-snap-frame">
+            <div class="ev-snap-photo">
+              <!-- 📌 REPLACE: <img src="images/screenshots/snap1.png" alt=""> -->
+              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap1.png</small></span>
+            </div>
+            <div class="ev-snap-cap">"Nobody remembers the original topic."</div>
+            <div class="ev-snap-ts">2:07 AM · Peak Intelligence Hours</div>
+          </div>
+        </div>
+
+        <div class="ev-snap-item" style="margin-top:26px;">
+          <div class="ev-snap-frame">
+            <div class="ev-snap-photo">
+              <!-- 📌 REPLACE: <img src="images/screenshots/snap2.png" alt=""> -->
+              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap2.png</small></span>
+            </div>
+            <div class="ev-snap-cap">"Sent as a joke. Not received as a joke."</div>
+            <div class="ev-snap-ts">Exhibit B · Time Unknown</div>
+          </div>
+        </div>
+
+        <div class="ev-snap-item">
+          <div class="ev-snap-washi" style="top:-10px;right:18%;width:52px;"></div>
+          <div class="ev-snap-frame">
+            <div class="ev-snap-photo">
+              <!-- 📌 REPLACE: <img src="images/screenshots/snap3.png" alt=""> -->
+              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap3.png</small></span>
+            </div>
+            <div class="ev-snap-cap">"The group had opinions. Many opinions."</div>
+            <div class="ev-snap-ts">Group Chaos · Archived</div>
+          </div>
+        </div>
+
+        <div class="ev-snap-item" style="margin-top:14px;">
+          <div class="ev-snap-frame">
+            <div class="ev-snap-photo">
+              <!-- 📌 REPLACE: <img src="images/screenshots/snap4.png" alt=""> -->
+              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap4.png</small></span>
+            </div>
+            <div class="ev-snap-cap">"Escalated quickly. As always."</div>
+            <div class="ev-snap-ts">Evidence Tag #04</div>
+          </div>
+        </div>
+
+        <div class="ev-snap-item">
+          <div class="ev-snap-washi" style="top:-10px;left:32%;width:60px;"></div>
+          <div class="ev-snap-frame">
+            <div class="ev-snap-photo">
+              <!-- 📌 REPLACE: <img src="images/screenshots/snap5.png" alt=""> -->
+              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap5.png</small></span>
+            </div>
+            <div class="ev-snap-cap">"Someone started a poll at 1 AM."</div>
+            <div class="ev-snap-ts">Democratic Process · Late</div>
+          </div>
+        </div>
+
+        <div class="ev-snap-item" style="margin-top:20px;">
+          <div class="ev-snap-frame">
+            <div class="ev-snap-photo">
+              <!-- 📌 REPLACE: <img src="images/screenshots/snap6.png" alt=""> -->
+              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap6.png</small></span>
+            </div>
+            <div class="ev-snap-cap">"The reaction that started everything."</div>
+            <div class="ev-snap-ts">Ground Zero · Unclassified</div>
+          </div>
+        </div>
+
+      </div><!-- /ev-snap-grid -->
+      <div class="ev-snap-footer">Evidence 004 · Snapshot Archive · Replace placeholders with real screenshots in images/screenshots/</div>
+    </div><!-- /ev-004 -->
+
+  </div><!-- /page-p5 -->
+
+  <!-- VII · Plans → chapters/7-plans/content.html -->
+  <div id="page-p6" class="journal-page">
+    <div class="page-wrap">
+      <div class="ch-header"><p class="ch-eyebrow">Chapter VI · Pending</p><h1 class="ch-title">Pending Operations</h1><p class="ch-sub">not a to-do list. a folder of future operations awaiting deployment.</p></div>
+      <div id="ops-root" class="ops-archive"></div>
+      <div id="ops-summary-root"></div>
+      <div class="page-footer">Chapter VI · Pending Operations · classification: ongoing · deadline: none on file</div>
+    </div>
+  </div>
+
+  <!-- VIII · Little Things → chapters/8-little-things/content.html -->
+  <div id="page-p7" class="journal-page">
+    <div class="page-wrap">
+      <div class="ch-header"><p class="ch-eyebrow">Chapter VII · The Details</p><h1 class="ch-title">Little Things</h1><p class="ch-sub">the small details that somehow became everything.</p></div>
+      <div class="stickies-board">
+        <div class="sticky-note"><div class="sticky-key">Favorite drink</div><div class="sticky-val">Water, Bael da Sharbat, Badam Kesar Doodh</div></div>
+        <div class="sticky-note"><div class="sticky-key">Favorite color</div><div class="sticky-val">Baby Pink</div></div>
+        <div class="sticky-note"><div class="sticky-key">Inside joke #1</div><div class="sticky-val">Blackheads</div></div>
+        <div class="sticky-note"><div class="sticky-key">Inside joke #2</div><div class="sticky-val">The time she fell in the corridor while it was raining outside</div></div>
+        <div class="sticky-note"><div class="sticky-key">Emoji she overuses</div><div class="sticky-val">🙂‍↕️ probably</div></div>
+        <div class="sticky-note"><div class="sticky-key">Things she always says</div><div class="sticky-val">"Dudeeeeee"</div></div>
+        <div class="sticky-note"><div class="sticky-key">Favorite food</div><div class="sticky-val">Boondi wala curry chawal, Momos</div></div>
+        <div class="sticky-note"><div class="sticky-key">Favorite dessert</div><div class="sticky-val">Rasmalai, Dark Chocolate</div></div>
+        <div class="sticky-note wide">
+          <div class="sticky-key">Nickname(s)</div>
+          <div class="sticky-val">
+            Babu <span class="sticky-note-tag">(the common one)</span><br>
+            Gudiya <span class="sticky-note-tag">(the common one pt. 2)</span><br>
+            Sneha <span class="sticky-note-tag">(almost)</span><br>
+            NitEEya <span class="sticky-note-tag">(Ansh Bhaiya)</span><br>
+            Nitii <span class="sticky-note-tag">(the name only some family peeps knew, at the time you told me)</span><br>
+            Ms. Cutu <span class="sticky-note-tag">(given by me, inspired by Sejal)</span><br>
+            Friend of Feliz <span class="sticky-note-tag">(GPT Baba zindabaad)</span><br>
+            Chinki <span class="sticky-note-tag">(the 2 guys)</span><br>
+            Chimnki <span class="sticky-note-tag">(the 2 guys again, mispronounced)</span><br>
+            Una <span class="sticky-note-tag">(the first ever, aka the OG)</span><br>
+            Ms. Goldfish <span class="sticky-note-tag">(by me, ofc)</span><br>
+            Lady G <span class="sticky-note-tag">(by me)</span><br>
+            Kanya Kumari <span class="sticky-note-tag">(the one recently discovered)</span>
+          </div>
+        </div>
+        <div class="sticky-note"><div class="sticky-key">Random fact about her</div><div class="sticky-val">A person who looks normal from a distance and abnormally normal from close</div></div>
+        <div class="sticky-note"><div class="sticky-key">What she's good at</div><div class="sticky-val">Art, singing, designing, ranting (I really love being part of the listener's community), savage replies, and helping others even while she's going through a rough patch herself</div></div>
+        <div class="sticky-note"><div class="sticky-key">First impression</div><div class="sticky-val">Just a girl helping a stranger guy (aka her classmate) roast her best friend</div></div>
+      </div>
+      <div class="page-footer">Chapter VII · Little Things · the small print of a whole friendship</div>
+    </div>
+  </div>
+
+  <!-- IX · Letter → chapters/9-letter/content.html -->
+  <div id="page-p8" class="journal-page">
+    <div class="page-wrap">
+      <div class="ch-header"><p class="ch-eyebrow">Chapter VIII · The Letter</p><h1 class="ch-title">Letter</h1><p class="ch-sub">no tape. no doodles. just words.</p></div>
+      <div class="letter-outer">
+        <div class="letter-paper">
+          <!-- 📌 EDIT: replace all letter content with your own words -->
+          <p class="letter-date">Written sometime late. You know what time.</p>
+          <div class="letter-body">
+            <p>I've been trying to write this for a while.</p>
+            <p>I kept starting and deleting and starting again because nothing felt like enough. And then I realized that's sort of the point — that some things are bigger than the words you have for them, and you just have to write them anyway.</p>
+            <p>You became one of my favorite people without either of us noticing. One day it was small talk. Then it was 3 AM calls. Then it was the first person I think of when something is funny, or bad, or strange, or just worth saying out loud.</p>
+            <p>I'm glad for the unfinished plans and the debates that went nowhere and the inside jokes that require twelve sentences of context to explain to anyone else. I'm glad for the calls where nothing important was said, and also for the ones where everything important was said and we both pretended not to notice.</p>
+            <p>I don't have a neat ending for this. Which feels right, honestly.</p>
+            <p>You know the rest. You were there for all of it.</p>
+          </div>
+          <div class="letter-sig">— still here</div>
+        </div>
+        <div class="qr-note" style="margin-top:32px;">
+          <div class="qr-placeholder" id="qr-grid"></div>
+          <p class="qr-note-text" style="font-family:'Caveat',cursive;font-size:15px;color:var(--ink-faded);">Scan to open this page directly<br><span style="font-size:12px;opacity:0.6;">(or attach an NFC tag to a physical copy)</span></p>
+        </div>
+      </div>
+      <div class="page-footer">Chapter VIII · Letter · replace the body with your actual words</div>
+    </div>
+  </div>
+
+  <!-- X · Ending → chapters/10-ending/content.html -->
+  <div id="page-ending" class="journal-page">
+    <div class="page-wrap">
+      <div class="end-orn">— ✦ —</div>
+      <hr class="end-rule">
+      <p class="end-title">End of Archive</p>
+      <p class="end-sub">No further records found.</p>
+      <hr class="end-rule">
+      <div class="end-blank">
+        <div id="typewriter-line"></div>
+      </div>
+    </div>
+    <div class="global-footer">Ctrl + Alt + Nostalgia · 2026 · handle with care · all rights reserved by memory</div>
+  </div>
+
+</div><!-- /journal-body -->
+
+<!-- ── JavaScript ── -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/ch7-plans-data.js"></script>
+<script src="assets/js/ch1-photos-data.js"></script>
+<script src="assets/js/ch2-calls-data.js"></script>
+<script src="assets/js/ch3-lore-data.js"></script>
+
+<script>
+/* ══════════════════════════════════════
+   REACTION VAULT · Evidence 001
+══════════════════════════════════════ */
+const RX_DATA = [
+  { id:'R-01', file:'P (1).png',  name:'Emotional Support Potato',  cls:'Emotional Support',      threat:'🟢 Low',      status:'Active Service',      deploy:'Daily',              notes:'Deployed whenever words fail and a potato is the only appropriate response.' },
+  { id:'R-02', file:'P (2).png',  name:'Mission Accepted',          cls:'Certified Chaos',        threat:'🟡 Medium',   status:'Frequently Deployed', deploy:'High Frequency',     notes:'Signals willingness to commit to plans that have not been fully thought through.' },
+  { id:'R-03', file:'P (3).png',  name:'The Artifact',              cls:'Observation Unit',       threat:'🟢 Low',      status:'Legendary',           deploy:'Situational',        notes:'Origin unknown. Context lost. Deployment continues regardless.' },
+  { id:'R-04', file:'P (4).png',  name:'Maximum UwU',               cls:'Wholesome Unit',         threat:'🟢 Low',      status:'Frequently Deployed', deploy:'High Frequency',     notes:'Responsible for a documented increase in soft communication. No apologies issued.' },
+  { id:'R-05', file:'P (5).png',  name:'Friendly Fire',             cls:'Friendly Fire',          threat:'🟡 Medium',   status:'Active Service',      deploy:'Situational',        notes:'Technically friendly. Consequences vary. Sender accepts no liability.' },
+  { id:'R-06', file:'P (6).png',  name:'The Witness',               cls:'Observation Unit',       threat:'🟢 Low',      status:'Active Service',      deploy:'Situational',        notes:'Has witnessed everything. Has said nothing. Filed it away permanently.' },
+  { id:'R-07', file:'P (7).png',  name:'Maximum UwU II',            cls:'Wholesome Unit',         threat:'🟢 Low',      status:'Frequently Deployed', deploy:'High Frequency',     notes:'Second deployment of the UwU Protocol. Effectiveness: undiminished.' },
+  { id:'R-08', file:'P (8).png',  name:'Evidence Overflow',         cls:'Certified Bruh',         threat:'🟡 Medium',   status:'Frequently Deployed', deploy:'High Frequency',     notes:'Sent when a situation has produced more content than can be reasonably processed.' },
+  { id:'R-09', file:'P (9).png',  name:'The Messenger',             cls:'Tactical Confusion',     threat:'🟡 Medium',   status:'Active Service',      deploy:'Situational',        notes:'Arrives with information. Leaves with more questions than before.' },
+  { id:'R-10', file:'P (10).png', name:'Mission Accepted II',       cls:'Certified Chaos',        threat:'🟠 Elevated', status:'Active Service',      deploy:'High Frequency',     notes:'Second confirmed commitment to a plan that was probably a bad idea.' },
+  { id:'R-11', file:'P (11).png', name:'Main Character Energy',     cls:'Psychological Warfare',  threat:'🟡 Medium',   status:'Active Service',      deploy:'Situational',        notes:'Deployed during moments of peak self-awareness. Occasionally ironic.' },
+  { id:'R-12', file:'P (12).png', name:'The Concerned Cat',         cls:'Emotional Support',      threat:'🟢 Low',      status:'Frequently Deployed', deploy:'High Frequency',     notes:'Known to immediately diffuse tense conversations. Somehow.' },
+  { id:'R-13', file:'P (13).png', name:'The Council Has Spoken',    cls:'Judgment Division',      threat:'🟡 Medium',   status:'Legendary',           deploy:'Situational',        notes:'Final verdict delivered. Appeals process: closed. Judgment: final.' },
+  { id:'R-14', file:'P (14).png', name:'Knowledge Drop',            cls:'Meme Warfare',           threat:'🟡 Medium',   status:'Active Service',      deploy:'Situational',        notes:'Information delivered. Whether it was wanted is a separate matter entirely.' },
+  { id:'R-15', file:'P (15).png', name:'The Silent Observer',       cls:'Observation Unit',       threat:'🟢 Low',      status:'Active Service',      deploy:'Situational',        notes:'Present for every major incident. Has never once offered an opinion.' },
+  { id:'R-16', file:'P (16).png', name:'The Judge',                 cls:'Judgment Division',      threat:'🟠 Elevated', status:'Active Service',      deploy:'Situational',        notes:'Has evaluated the situation. Verdict: you already know.' },
+  { id:'R-17', file:'P (17).png', name:'Evidence Overflow II',      cls:'Certified Bruh',         threat:'🟡 Medium',   status:'Frequently Deployed', deploy:'High Frequency',     notes:'Second wave. The situation has continued to produce material. Analysts overwhelmed.' },
+  { id:'R-18', file:'P (18).png', name:'The Approval Stamp',        cls:'Emergency Response',     threat:'🟢 Low',      status:'Frequently Deployed', deploy:'High Frequency',     notes:'Official sanction granted. Proceed with whatever you were going to do anyway.' },
+  { id:'R-19', file:'P (19).png', name:'Knowledge Drop II',         cls:'Meme Warfare',           threat:'🟡 Medium',   status:'Active Service',      deploy:'Situational',        notes:'Follow-up intelligence delivered. Whether anyone asked remains unconfirmed.' },
+  { id:'R-20', file:'P (20).png', name:'The Witness II',            cls:'Observation Unit',       threat:'🟢 Low',      status:'Active Service',      deploy:'Situational',        notes:'Still watching. Still saying nothing. Still filing everything.' },
+  { id:'R-21', file:'P (21).png', name:'Fancy Gentleman',           cls:'Passive Aggressive',     threat:'🟡 Medium',   status:'Legendary',           deploy:'Rare',               notes:'Reserved for moments requiring exactly this level of distinguished disapproval.' },
+  { id:'R-22', file:'P (22).png', name:'Threat Detected',           cls:'Psychological Warfare',  threat:'🟠 Elevated', status:'Active Service',      deploy:'Situational',        notes:'Something has been identified. Whether it is actually a threat: undetermined.' },
+  { id:'R-23', file:'P (23).png', name:'Friendly Fire II',          cls:'Friendly Fire',          threat:'🟠 Elevated', status:'Active Service',      deploy:'Situational',        notes:'Affectionate in intent. Damaging in execution. Sender remains unbothered.' },
+  { id:'R-24', file:'P (24).png', name:'Critical Damage',           cls:'Emotional Damage',       threat:'🔴 High',     status:'Active Service',      deploy:'Situational',        notes:'Delivered at close range. Recovery time: variable. Regret: none filed.' },
+  { id:'R-25', file:'P (25).png', name:'Peak Disappointment',       cls:'Judgment Division',      threat:'🟡 Medium',   status:'Frequently Deployed', deploy:'High Frequency',     notes:'Communicates the exact level of disappointment without a single word.' },
+  { id:'R-26', file:'P (26).png', name:'Angy.exe',                  cls:'Certified Chaos',        threat:'🟠 Elevated', status:'Active Service',      deploy:'Situational',        notes:'Deployed when irritation has been processed and formatted for communication.' },
+  { id:'R-27', file:'P (27).png', name:'The "UwU" Protocol',        cls:'Wholesome Unit',         threat:'🟢 Low',      status:'Active Service',      deploy:'Situational',        notes:'The protocol has been initiated. Proceed with softness accordingly.' },
+  { id:'R-28', file:'P (28).png', name:'Maximum UwU III',           cls:'Wholesome Unit',         threat:'🟢 Low',      status:'Frequently Deployed', deploy:'High Frequency',     notes:'Third iteration. Shows no signs of stopping. Nobody is complaining.' },
+  { id:'R-29', file:'P (29).png', name:'Double Angy',               cls:'Certified Chaos',        threat:'🔴 High',     status:'Active Service',      deploy:'Situational',        notes:'Twice the angy. Double the commitment. Zero the de-escalation.' },
+  { id:'R-30', file:'P (30).png', name:'Midnight Cereal Protocol',  cls:'Social Battery',         threat:'🟢 Low',      status:'Legendary',           deploy:'Emergency Use Only', notes:'Activated exclusively during late-night operations. Cereal: mandatory.' },
+  { id:'R-31', file:'P (31).png', name:'Certified Bruh Moment',     cls:'Certified Bruh',         threat:'🟡 Medium',   status:'Frequently Deployed', deploy:'High Frequency',     notes:'Issued when a situation has reached the official threshold for bruh classification.' },
+  { id:'R-32', file:'P (32).png', name:'Administrative Nightmare',  cls:'Tactical Confusion',     threat:'🟠 Elevated', status:'Active Service',      deploy:'Situational',        notes:'Deployed when bureaucracy has produced yet another completely unnecessary obstacle.' },
+  { id:'R-33', file:'P (33).png', name:'Comfy Mode Activated',      cls:'Social Battery',         threat:'🟢 Low',      status:'Active Service',      deploy:'Situational',        notes:'System has entered low-power mode. Engagement levels: minimal. Vibe: immaculate.' },
+  { id:'R-34', file:'P (34).png', name:'Forbidden Snack',           cls:'Peak Comedy',            threat:'🟡 Medium',   status:'Legendary',           deploy:'Rare',               notes:'The snack was forbidden. It was consumed anyway. No further explanation provided.' },
+  { id:'R-35', file:'P (35).png', name:'System Crash',              cls:'Emergency Response',     threat:'⚫ Critical', status:'Active Service',      deploy:'Emergency Use Only', notes:'Everything has failed simultaneously. Reboot in progress. ETA: unknown.' },
+  { id:'R-36', file:'P (36).png', name:'Social Battery: 1%',        cls:'Social Battery',         threat:'🟠 Elevated', status:'Frequently Deployed', deploy:'Situational',        notes:'Final warning. One percent remains. Charge before sending another message.' }
+];
+
+let currentDossierIndex = 0;
+
+function buildReactionGrid() {
+  const grid = document.getElementById('ev-rx-grid');
+  if (!grid || grid.children.length > 0) return;
+  RX_DATA.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'ev-rx-card';
+    card.innerHTML = `
+      <div class="ev-rx-img-wrap">
+        <img src="images/reactions/${r.file}" alt="${r.name}" loading="lazy">
+        <div class="ev-rx-card-reveal">View Dossier →</div>
+      </div>
+      <div class="ev-rx-card-body">
+        <div class="ev-rx-card-num">${r.id}</div>
+        <div class="ev-rx-card-name">${r.name}</div>
+        <div class="ev-rx-card-status">● Active</div>
+      </div>
+      <button class="ev-rx-card-btn">View Dossier →</button>
+    `;
+    card.addEventListener('click', () => openDossier(i));
+    grid.appendChild(card);
+  });
+}
+
+function openDossier(index) {
+  currentDossierIndex = index;
+  const r = RX_DATA[index];
+  document.getElementById('dos-num').textContent = `Reaction ${r.id} · Evidence 001`;
+  document.getElementById('dos-codename').textContent = r.name;
+  document.getElementById('dos-img').src = `images/reactions/${r.file}`;
+  document.getElementById('dos-img').alt = r.name;
+  document.getElementById('dos-class').textContent = r.cls;
+  document.getElementById('dos-threat').textContent = r.threat;
+  document.getElementById('dos-status').textContent = r.status;
+  document.getElementById('dos-deploy').textContent = r.deploy;
+  document.getElementById('dos-notes').textContent = r.notes;
+  document.getElementById('dos-counter').textContent = `${index + 1} / ${RX_DATA.length}`;
+  const modal = document.getElementById('ev-rx-dossier');
+  modal.classList.add('open');
+  modal.scrollTop = 0;
+}
+
+function closeDossier() {
+  document.getElementById('ev-rx-dossier').classList.remove('open');
+}
+
+function navDossier(dir) {
+  let next = currentDossierIndex + dir;
+  if (next < 0) next = RX_DATA.length - 1;
+  if (next >= RX_DATA.length) next = 0;
+  openDossier(next);
+}
+
+document.getElementById('ev-rx-dossier').addEventListener('click', function(e) {
+  if (e.target === this) closeDossier();
+});
+document.addEventListener('keydown', function(e) {
+  const dossier = document.getElementById('ev-rx-dossier');
+  const isOpen = dossier.classList.contains('open');
+  if (e.key === 'Escape' && isOpen) { closeDossier(); return; }
+  if (!isOpen) return;
+  if (e.key === 'ArrowRight') { navDossier(1); return; }
+  if (e.key === 'ArrowLeft')  { navDossier(-1); return; }
+  if (['Space','PageUp','PageDown','ArrowUp','ArrowDown'].includes(e.code)) {
+    e.preventDefault();
+    const amount = e.code === 'Space' || e.code === 'PageDown' ? 300
+                 : e.code === 'PageUp' ? -300
+                 : e.code === 'ArrowDown' ? 80 : -80;
+    dossier.scrollBy({ top: amount, behavior: 'smooth' });
+  }
+});
+
+// Hook into existing evOpen
+const _origEvOpen = window.evOpen;
+window.evOpen = function(id) {
+  if (_origEvOpen) _origEvOpen(id);
+  if (id === '001') setTimeout(buildReactionGrid, 50);
+};
+</script>
+</body>
+</html>

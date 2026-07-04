@@ -1,0 +1,340 @@
+/* ═══════════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --leather:     #3d2b1a;
+  --leather-mid: #5c3d22;
+  --leather-hi:  #7a5233;
+  --gold:        #c9a84c;
+  --gold-dim:    #a8894a;
+  --paper:       #f2ead8;
+  --paper-warm:  #ede3c8;
+  --paper-aged:  #d8ccb0;
+  --paper-dark:  #cfc3a5;
+  --ink:         #1e1510;
+  --ink-mid:     #4a3828;
+  --ink-faded:   #7a6550;
+  --ink-muted:   #a89880;
+  --rust:        #8b3a1e;
+  --rust-dim:    #6b2e18;
+  --forest:      #2d4a28;
+  --stamp-red:   #922b21;
+  --stamp-blue:  #1a3055;
+  --cream:       #faf6ed;
+}
+
+body {
+  background: #0a0704;
+  color: var(--ink);
+  font-family: 'Lora', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════
+   DUST PARTICLES
+═══════════════════════════════════════════ */
+#dust-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+body.journal-open #dust-canvas { opacity: 1; }
+
+/* ═══════════════════════════════════════════
+   PAPER TEXTURE
+═══════════════════════════════════════════ */
+.paper-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+  mix-blend-mode: multiply;
+}
+
+/* ═══════════════════════════════════════════
+   COVER SCREEN
+═══════════════════════════════════════════ */
+#cover-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #1a0f06 0%, #0a0704 100%);
+  transition: opacity 1.2s ease;
+}
+#cover-screen.hidden { opacity: 0; pointer-events: none; }
+
+.desk {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 35%;
+  background: linear-gradient(to bottom, #1a0e07 0%, #2a1a0e 30%, #3a2512 100%);
+  box-shadow: 0 -20px 80px rgba(0,0,0,0.8);
+}
+.desk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px),
+    repeating-linear-gradient(180deg, transparent 0px, transparent 40px, rgba(255,255,255,0.008) 40px, rgba(255,255,255,0.008) 41px);
+}
+
+.candle-glow {
+  position: absolute;
+  bottom: 28%; right: 15%;
+  width: 180px; height: 180px;
+  background: radial-gradient(ellipse, rgba(255,180,60,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: candleFlicker 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes candleFlicker {
+  0%,100% { opacity: 0.7; transform: scale(1); }
+  33%      { opacity: 0.9; transform: scale(1.08); }
+  66%      { opacity: 0.6; transform: scale(0.95); }
+}
+
+.journal-cover-wrap {
+  position: relative;
+  perspective: 1200px;
+  z-index: 10;
+}
+.journal-cover-3d {
+  width: min(380px, 90vw);
+  position: relative;
+  transform-style: preserve-3d;
+  animation: coverBob 6s ease-in-out infinite;
+}
+@keyframes coverBob {
+  0%,100% { transform: rotateX(2deg) rotateY(-2deg); }
+  50%      { transform: rotateX(-1deg) rotateY(2deg); }
+}
+
+.cover-front {
+  background: linear-gradient(135deg, #2a1a0a 0%, #3d2b1a 30%, #4e3520 60%, #3a2410 80%, #2a1a0a 100%);
+  border-radius: 4px 16px 16px 4px;
+  padding: 48px 36px;
+  position: relative;
+  box-shadow: -8px 0 0 #1a0e07, -10px 2px 40px rgba(0,0,0,0.9), inset 2px 0 20px rgba(255,255,255,0.04), inset -2px 0 10px rgba(0,0,0,0.3);
+  text-align: center;
+  min-height: min(520px, 80vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+}
+.cover-front::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='l'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.3' numOctaves='4' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23l)' opacity='0.12'/%3E%3C/svg%3E");
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.cover-corner { position: absolute; width: 48px; height: 48px; border: 2px solid var(--gold-dim); opacity: 0.35; }
+.cover-corner.tl { top: 16px; left: 16px; border-right: none; border-bottom: none; border-radius: 4px 0 0 0; }
+.cover-corner.tr { top: 16px; right: 16px; border-left: none; border-bottom: none; border-radius: 0 4px 0 0; }
+.cover-corner.bl { bottom: 16px; left: 16px; border-right: none; border-top: none; border-radius: 0 0 0 4px; }
+.cover-corner.br { bottom: 16px; right: 16px; border-left: none; border-top: none; border-radius: 0 0 4px 0; }
+
+.cover-spine-line {
+  position: absolute;
+  left: 20px; top: 10%; bottom: 10%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+  opacity: 0.25;
+}
+
+.cover-classification {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold-dim); opacity: 0.6;
+  border: 1px solid var(--gold-dim);
+  padding: 4px 12px;
+  position: relative; z-index: 1;
+  animation: coverFadeIn 0.8s ease 1.5s both;
+}
+.cover-title {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(22px, 5vw, 34px);
+  color: var(--gold); letter-spacing: 1px; line-height: 1.25;
+  text-shadow: 0 2px 12px rgba(201,168,76,0.4);
+  position: relative; z-index: 1;
+  animation: coverFadeIn 0.8s ease 1.8s both;
+}
+.cover-subtitle {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-dim); opacity: 0.7;
+  position: relative; z-index: 1;
+  animation: coverFadeIn 0.8s ease 2.1s both;
+}
+.cover-rule {
+  width: 80%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  opacity: 0.4; position: relative; z-index: 1;
+  animation: coverFadeIn 0.8s ease 2.3s both;
+}
+.cover-year {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--gold-dim); opacity: 0.55;
+  position: relative; z-index: 1;
+  animation: coverFadeIn 0.8s ease 2.4s both;
+}
+.cover-property {
+  font-family: 'Caveat', cursive; font-size: 16px;
+  color: var(--gold-dim); opacity: 0.75; line-height: 1.8;
+  position: relative; z-index: 1;
+  animation: coverFadeIn 0.8s ease 2.6s both;
+}
+.cover-name {
+  font-family: 'IM Fell English', serif; font-style: italic; font-size: 22px;
+  color: var(--gold); text-shadow: 0 1px 8px rgba(201,168,76,0.3);
+  position: relative; z-index: 1;
+  animation: coverFadeIn 0.8s ease 2.8s both;
+}
+.open-journal-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--leather);
+  background: linear-gradient(135deg, #c9a84c, #a8894a);
+  border: none; padding: 14px 36px; cursor: pointer; border-radius: 2px;
+  position: relative; z-index: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+  animation: coverFadeIn 0.8s ease 3.2s both;
+  margin-top: 8px;
+}
+.open-journal-btn:hover { background: linear-gradient(135deg, #d4b560, #b8996a); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(201,168,76,0.5); }
+.open-journal-btn:active { transform: scale(0.97); }
+
+.cover-archive-info {
+  position: absolute;
+  bottom: 28px; left: 0; right: 0;
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 8px; letter-spacing: 2px;
+  color: var(--gold-dim); opacity: 0.3;
+  z-index: 1;
+  animation: coverFadeIn 0.8s ease 3.5s both;
+  line-height: 1.8; text-transform: uppercase;
+}
+@keyframes coverFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   INSIDE COVER
+═══════════════════════════════════════════ */
+#inside-cover {
+  display: none; position: fixed; inset: 0; z-index: 990;
+  background: #0a0704; align-items: center; justify-content: center;
+}
+#inside-cover.visible { display: flex; animation: pageFade 0.6s ease both; }
+
+.archive-card {
+  background: var(--paper); max-width: 420px; width: 90%;
+  padding: 48px 40px; border: 1px solid var(--paper-aged);
+  box-shadow: 0 8px 60px rgba(0,0,0,0.8); text-align: center; position: relative;
+}
+.archive-card::before { content: ''; position: absolute; inset: 8px; border: 0.5px solid var(--paper-aged); pointer-events: none; }
+.archive-rule { width: 80%; border: none; border-top: 1px solid var(--paper-aged); margin: 16px auto; }
+.archive-label { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+.archive-value { font-family: 'Caveat', cursive; font-size: 18px; color: var(--ink-mid); margin-bottom: 16px; }
+.archive-title-block { font-family: 'Special Elite', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-mid); margin-bottom: 24px; }
+.archive-proceed {
+  font-family: 'Special Elite', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--paper); background: var(--ink); border: none; padding: 13px 32px; cursor: pointer; margin-top: 24px; transition: all 0.25s;
+}
+.archive-proceed:hover { background: var(--ink-mid); }
+
+/* ═══════════════════════════════════════════
+   MAIN JOURNAL BODY
+═══════════════════════════════════════════ */
+#journal-body { display: none; min-height: 100vh; background: var(--paper); position: relative; }
+#journal-body.visible { display: block; animation: pageFade 0.8s ease both; }
+
+@keyframes pageFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════
+   JOURNAL CHROME
+═══════════════════════════════════════════ */
+.journal-chrome {
+  position: sticky; top: 0; z-index: 100;
+  background: linear-gradient(to bottom, var(--paper-warm) 0%, var(--paper) 100%);
+  border-bottom: 1px solid var(--paper-aged);
+  box-shadow: 0 2px 20px rgba(44,36,22,0.08);
+}
+.chrome-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px 8px; max-width: 900px; margin: 0 auto;
+}
+.wordmark {
+  font-family: 'IM Fell English', serif; font-style: italic; font-size: 15px;
+  color: var(--ink-mid); cursor: pointer; background: none; border: none;
+}
+.wordmark:hover { color: var(--ink); }
+.chapter-indicator { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); transition: all 0.3s; }
+.journal-tabs {
+  display: flex; overflow-x: auto; scrollbar-width: none;
+  max-width: 900px; margin: 0 auto; padding: 0 12px; gap: 0;
+}
+.journal-tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--ink-muted); background: none; border: none; border-bottom: 2px solid transparent;
+  padding: 8px 12px 10px; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0;
+}
+.tab-btn:hover { color: var(--ink-mid); border-bottom-color: var(--paper-aged); }
+.tab-btn.active { color: var(--rust); border-bottom-color: var(--rust); }
+
+/* ═══════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════ */
+.journal-page { display: none; }
+.journal-page.active { display: block; animation: pageReveal 0.5s ease both; }
+@keyframes pageReveal {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 100px; }
+
+/* ═══════════════════════════════════════════
+   CHAPTER HEADER (shared)
+═══════════════════════════════════════════ */
+.ch-header { margin-bottom: 52px; padding-bottom: 32px; border-bottom: 1px solid var(--paper-aged); }
+.ch-eyebrow { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+.ch-title { font-family: 'IM Fell English', serif; font-size: clamp(28px,5vw,46px); color: var(--ink); font-style: italic; line-height: 1.1; margin-bottom: 10px; }
+.ch-sub { font-family: 'Caveat', cursive; font-size: 18px; color: var(--ink-faded); }
+.page-footer { margin-top: 64px; border-top: 1px dashed var(--paper-aged); padding-top: 20px; font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); opacity: 0.5; text-align: center; }
+.global-footer { border-top: 1px dashed var(--paper-aged); padding: 28px 20px 40px; text-align: center; font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); opacity: 0.45; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:640px) {
+  .page-wrap { padding: 40px 16px 80px; }
+  .journal-tabs { padding: 0 8px; }
+  .tab-btn { padding: 8px 8px 10px; font-size: 8px; letter-spacing: 0.8px; }
+}

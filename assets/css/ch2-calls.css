@@ -1,0 +1,98 @@
+/* ═══════════════════════════════════════════
+   II. CALL FILES
+═══════════════════════════════════════════ */
+.case-files { display: flex; flex-direction: column; gap: 44px; }
+
+.case-file {
+  background: var(--cream); border: 1px solid var(--paper-aged);
+  padding: 36px 36px 32px 44px; position: relative;
+  box-shadow: 3px 5px 22px rgba(44,36,22,0.09);
+}
+.case-file::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 8px;
+  background: linear-gradient(to right, var(--rust) 0%, var(--rust-dim) 100%);
+}
+.case-file::after {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(to bottom, transparent 0px, transparent 29px, rgba(100,130,170,0.07) 29px, rgba(100,130,170,0.07) 30px);
+  pointer-events: none;
+}
+.paperclip-svg { position: absolute; top: -22px; right: 48px; width: 24px; opacity: 0.35; }
+
+.case-id { font-family: 'Special Elite', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; position: relative; z-index: 1; }
+.case-name { font-family: 'IM Fell English', serif; font-size: clamp(20px,3vw,26px); color: var(--ink); margin-bottom: 20px; position: relative; z-index: 1; }
+.case-divider { border: none; border-top: 1px dashed var(--paper-aged); margin: 16px 0; position: relative; z-index: 1; }
+.case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 16px 24px; position: relative; z-index: 1; }
+.case-field label { font-family: 'Special Elite', monospace; font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); display: block; margin-bottom: 4px; }
+.case-field .val { font-family: 'Caveat', cursive; font-size: 18px; color: var(--ink); line-height: 1.3; }
+.case-field .dur { font-family: 'IM Fell English', serif; font-size: 32px; color: var(--ink); letter-spacing: 1px; }
+.case-notes { font-family: 'Caveat', cursive; font-size: 16px; color: var(--ink-faded); line-height: 1.9; padding-top: 16px; border-top: 1px dashed var(--paper-aged); margin-top: 8px; position: relative; z-index: 1; }
+
+.stamp {
+  position: absolute; top: 28px; right: 32px;
+  font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  border: 2px solid; padding: 5px 10px; transform: rotate(-4deg); z-index: 2;
+}
+.stamp.red  { color: var(--stamp-red);  border-color: var(--stamp-red);  opacity: 0.55; }
+.stamp.blue { color: var(--stamp-blue); border-color: var(--stamp-blue); opacity: 0.5; }
+.stamp.grn  { color: var(--forest);     border-color: var(--forest);     opacity: 0.45; }
+
+@media(max-width:640px) { .case-file { padding: 28px 20px 24px 36px; } }
+
+/* ---- Communication Summary card ---- */
+.call-summary-card {
+  background: var(--cream); border: 1px solid var(--paper-aged);
+  padding: 36px 36px 32px 44px; position: relative;
+  box-shadow: 3px 5px 22px rgba(44,36,22,0.09);
+  margin-bottom: 44px;
+}
+.call-summary-card::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 8px;
+  background: linear-gradient(to right, var(--forest) 0%, var(--rust-dim) 100%);
+}
+.call-summary-title {
+  font-family: 'Special Elite', monospace; font-size: 12px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--ink-mid); margin-bottom: 6px; position: relative; z-index: 1;
+}
+.call-summary-period {
+  font-family: 'Caveat', cursive; font-size: 18px; color: var(--ink-faded); margin-bottom: 20px; position: relative; z-index: 1;
+}
+.call-summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(170px,1fr)); gap: 20px 24px;
+  position: relative; z-index: 1; border-top: 1px dashed var(--paper-aged); padding-top: 22px;
+}
+.call-stat label {
+  font-family: 'Special Elite', monospace; font-size: 8px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--ink-muted); display: block; margin-bottom: 4px;
+}
+.call-stat .val { font-family: 'IM Fell English', serif; font-size: 22px; color: var(--ink); line-height: 1.25; }
+
+/* ---- Classification Notice ---- */
+.call-notice-card {
+  background: var(--paper-warm); border: 1px dashed var(--stamp-red);
+  padding: 28px 32px; position: relative; margin-bottom: 44px;
+  box-shadow: 2px 4px 16px rgba(44,36,22,0.06);
+}
+.call-notice-title {
+  font-family: 'Special Elite', monospace; font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--stamp-red); opacity: 0.75; margin-bottom: 14px;
+}
+.call-notice-body { font-family: 'Caveat', cursive; font-size: 17px; color: var(--ink-mid); line-height: 1.7; }
+.call-notice-body p { margin-bottom: 10px; }
+.call-notice-list { list-style: none; margin: 4px 0 10px; padding: 0; }
+.call-notice-list li { padding-left: 18px; position: relative; }
+.call-notice-list li::before { content: '•'; position: absolute; left: 0; color: var(--stamp-red); opacity: 0.6; }
+
+/* ---- Additional Call sub-block inside a record card ---- */
+.additional-call {
+  margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--paper-aged);
+  position: relative; z-index: 1;
+}
+.additional-call-label {
+  font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px;
+}
+
+@media(max-width:640px) {
+  .call-summary-card, .call-notice-card { padding: 24px 20px; }
+}

@@ -1,0 +1,139 @@
+/* ═══════════════════════════════════════════
+   VII. PENDING OPERATIONS
+═══════════════════════════════════════════ */
+.ops-archive { display: flex; flex-direction: column; gap: 26px; max-width: 720px; margin-bottom: 44px; }
+
+.op-card {
+  background: var(--cream); border: 1px solid var(--paper-aged);
+  box-shadow: 2px 4px 16px rgba(44,36,22,0.08);
+  padding: 26px 30px 28px 34px; position: relative;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.op-card.visible { opacity: 1; transform: translateY(0); }
+.op-card::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 5px;
+  background: var(--rust-dim); opacity: 0.55;
+}
+
+.op-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.op-id { font-family: 'Special Elite', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-muted); }
+.op-title { font-family: 'IM Fell English', serif; font-style: italic; font-size: clamp(20px,3vw,25px); color: var(--ink); margin: 4px 0 16px; line-height: 1.15; }
+
+.op-status {
+  font-family: 'Special Elite', monospace; font-size: 8.5px; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 5px 11px; border: 1px solid var(--rust-dim);
+  color: var(--rust-dim); border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+}
+.op-status.grn { border-color: var(--forest); color: var(--forest); }
+.op-status.blue { border-color: var(--stamp-blue); color: var(--stamp-blue); }
+.op-status.red { border-color: var(--stamp-red); color: var(--stamp-red); }
+
+.op-divider { border: none; border-top: 1px dashed var(--paper-aged); margin-bottom: 18px; }
+
+.op-field { margin-bottom: 14px; }
+.op-field:last-child { margin-bottom: 0; }
+.op-field label {
+  display: block; font-family: 'Special Elite', monospace; font-size: 8px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--ink-muted); margin-bottom: 5px;
+}
+.op-text { font-family: 'Caveat', cursive; font-size: 17px; color: var(--ink-mid); line-height: 1.6; }
+.op-alias { font-family: 'Caveat', cursive; font-size: 16px; color: var(--ink-faded); font-style: italic; }
+
+@media(max-width:640px) { .op-card { padding: 22px 20px 24px 24px; } }
+
+/* ═══════════════════════════════════════════
+   VIII. LITTLE THINGS (sticky notes)
+═══════════════════════════════════════════ */
+.stickies-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  gap: 20px; align-items: start;
+}
+.sticky-note {
+  border-radius: 2px; padding: 20px 16px 22px; position: relative;
+  box-shadow: 2px 3px 12px rgba(44,36,22,0.1), 0 1px 3px rgba(44,36,22,0.06);
+  transition: transform 0.3s ease; min-height: 100px;
+}
+.sticky-note:hover { transform: rotate(0deg) scale(1.03) translateY(-3px) !important; z-index: 3; }
+.sticky-note:nth-child(1)  { background: #fde9f5; transform: rotate(-2.2deg); }
+.sticky-note:nth-child(2)  { background: #fff4cc; transform: rotate(1.5deg); }
+.sticky-note:nth-child(3)  { background: #f0f8e8; transform: rotate(-1deg); }
+.sticky-note:nth-child(4)  { background: #fde0d0; transform: rotate(2.1deg); }
+.sticky-note:nth-child(5)  { background: #e8f0fd; transform: rotate(-1.8deg); }
+.sticky-note:nth-child(6)  { background: #fde9f5; transform: rotate(1.2deg); }
+.sticky-note:nth-child(7)  { background: #e8fde9; transform: rotate(-0.8deg); }
+.sticky-note:nth-child(8)  { background: #fff4cc; transform: rotate(2.5deg); }
+.sticky-note:nth-child(9)  { background: #fde0d0; transform: rotate(-1.5deg); }
+.sticky-note:nth-child(10) { background: #e8f0fd; transform: rotate(1.8deg); }
+.sticky-note:nth-child(11) { background: #f0f8e8; transform: rotate(-2deg); }
+.sticky-note:nth-child(12) { background: #e8fde9; transform: rotate(1.4deg); }
+.sticky-note:nth-child(13) { background: #fde9f5; transform: rotate(-1.2deg); }
+.sticky-note.wide { grid-column: span 2; }
+.sticky-note-tag { font-family: 'Caveat', cursive; font-size: 13px; color: var(--ink-faded); opacity: 0.75; }
+@media(max-width:640px) { .sticky-note.wide { grid-column: span 2; } }
+.sticky-note::before {
+  content: ''; position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
+  width: 11px; height: 11px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ddd, var(--ink-muted));
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.sticky-key { font-family: 'Special Elite', monospace; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; opacity: 0.7; }
+.sticky-val { font-family: 'Caveat', cursive; font-size: 17px; color: var(--ink); line-height: 1.5; }
+
+@media(max-width:640px) { .stickies-board { grid-template-columns: 1fr 1fr; } }
+
+/* ═══════════════════════════════════════════
+   IX. LETTER
+═══════════════════════════════════════════ */
+.letter-outer { max-width: 600px; margin: 0 auto; }
+.letter-paper {
+  background: var(--cream); border: 0.5px solid var(--paper-aged);
+  padding: 64px 56px 72px; position: relative;
+  box-shadow: 0 6px 40px rgba(44,36,22,0.08);
+}
+@media(max-width:600px) { .letter-paper { padding: 40px 28px 52px; } }
+.letter-paper::before {
+  content: ''; position: absolute; top: 24px; left: 56px; right: 56px;
+  height: 1px; background: linear-gradient(to right, transparent, var(--paper-aged), transparent);
+}
+.letter-date { font-family: 'Special Elite', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--ink-muted); margin-bottom: 40px; text-transform: uppercase; opacity: 0.6; }
+.letter-body { font-family: 'IM Fell English', serif; font-size: 16px; color: var(--ink); line-height: 2.2; }
+.letter-body p { margin-bottom: 24px; }
+.letter-sig { margin-top: 48px; font-family: 'Caveat', cursive; font-size: 28px; color: var(--rust); font-weight: 600; }
+
+.qr-note { margin-top: 40px; text-align: center; padding: 20px; border: 1px dashed var(--paper-aged); }
+.qr-placeholder { width: 72px; height: 72px; background: var(--paper-aged); margin: 0 auto 12px; display: grid; grid-template-columns: repeat(7,1fr); gap: 1px; padding: 4px; opacity: 0.5; }
+.qr-cell { background: var(--ink); border-radius: 1px; }
+.qr-cell.w { background: var(--paper-warm); }
+.qr-note-text { font-family: 'Caveat', cursive; font-size: 14px; color: var(--ink-faded); }
+
+/* ═══════════════════════════════════════════
+   X. ENDING
+═══════════════════════════════════════════ */
+#page-ending .page-wrap {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: calc(100vh - 120px); text-align: center; padding-top: 60px; padding-bottom: 60px;
+}
+.end-orn { font-family: 'IM Fell English', serif; font-size: 32px; color: var(--ink-muted); letter-spacing: 10px; opacity: 0.4; margin-bottom: 32px; }
+.end-rule { width: 80px; border: none; border-top: 1px solid var(--paper-aged); margin: 0 auto 28px; }
+.end-title { font-family: 'IM Fell English', serif; font-size: 24px; color: var(--ink-faded); font-style: italic; margin-bottom: 10px; }
+.end-sub { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); opacity: 0.5; margin-bottom: 32px; }
+.end-blank {
+  width: 100%; max-width: 480px; height: 120px;
+  background: var(--cream); border: 0.5px solid var(--paper-aged);
+  margin: 0 auto; position: relative;
+  box-shadow: 1px 2px 10px rgba(44,36,22,0.06);
+  display: flex; align-items: center; justify-content: center;
+}
+#typewriter-line {
+  font-family: 'Caveat', cursive; font-size: 22px; color: var(--ink); font-style: italic;
+  opacity: 0; transition: opacity 0.5s; padding: 0 24px; text-align: center; line-height: 1.6;
+}
+#typewriter-line.visible { opacity: 1; }
+.tw-cursor {
+  display: inline-block; width: 2px; height: 1.1em;
+  background: var(--ink); margin-left: 2px; vertical-align: text-bottom;
+  animation: twBlink 0.8s step-end infinite;
+}
+@keyframes twBlink { 0%,100%{opacity:1} 50%{opacity:0} }

@@ -1,0 +1,37 @@
+/* ═══════════════════════════════════════════
+   IV. BUSINESS IDEAS
+═══════════════════════════════════════════ */
+.notebook-stack { display: flex; flex-direction: column; gap: 48px; }
+
+.notebook-page {
+  background: #faf6e8; border: 1px solid var(--paper-aged); position: relative;
+  box-shadow: 4px 6px 24px rgba(44,36,22,0.1), -1px -1px 0 var(--paper-dark); overflow: hidden;
+}
+.notebook-page::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, rgba(100,140,190,0.1) 31px, rgba(100,140,190,0.1) 32px);
+  pointer-events: none;
+}
+.notebook-page::after {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 54px;
+  width: 1px; background: rgba(180,50,50,0.18); pointer-events: none;
+}
+
+.nb-top { padding: 24px 28px 16px 72px; border-bottom: 2px solid var(--paper-aged); position: relative; z-index: 1; }
+.nb-idea-num { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); }
+.nb-idea-name { font-family: 'IM Fell English', serif; font-size: clamp(18px,3vw,24px); color: var(--ink); font-style: italic; }
+
+.nb-body { padding: 20px 28px 28px 72px; display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 1; }
+.nb-row { display: grid; grid-template-columns: 130px 1fr; gap: 8px; align-items: baseline; }
+@media(max-width:480px) { .nb-row { grid-template-columns: 1fr; gap: 2px; } }
+
+.nb-label { font-family: 'Special Elite', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-muted); }
+.nb-val { font-family: 'Caveat', cursive; font-size: 18px; color: var(--ink); line-height: 1.5; }
+
+.nb-bar-wrap { display: flex; align-items: center; gap: 10px; }
+.nb-bar { height: 7px; width: 100px; background: var(--paper-aged); border-radius: 4px; overflow: hidden; }
+.nb-bar-fill { height: 100%; border-radius: 4px; }
+.nb-bar-fill.red   { background: var(--rust); opacity: 0.65; }
+.nb-bar-fill.green { background: var(--forest); opacity: 0.6; }
+
+.nb-doodle { position: absolute; font-family: 'Caveat', cursive; font-size: 13px; color: var(--ink-faded); opacity: 0.45; pointer-events: none; transform: rotate(var(--rot)); }

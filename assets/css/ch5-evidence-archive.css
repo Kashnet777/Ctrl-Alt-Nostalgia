@@ -1,0 +1,1530 @@
+/* ═══════════════════════════════════════════
+   EVIDENCE ARCHIVE — Complete Dossier Styles
+   Chapter V · Evidence Archive CSS
+═══════════════════════════════════════════ */
+
+/* ── Evidence Page Layout ── */
+.ev-page {
+  background: #1a1108;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.ev-view {
+  display: none;
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+}
+.ev-view.ev-active { display: block; }
+
+/* ── Reaction Vault specific overrides ── */
+#ev-001.ev-active {
+  background: #0a0702;
+}
+
+/* ── Filing Cabinet Archive Index ── */
+.ev-cab-head {
+  text-align: center;
+  padding: 60px 24px 32px;
+  background: linear-gradient(to bottom, #0d0804, #1a1108 80%);
+  border-bottom: 2px solid #3d2b1a;
+}
+.ev-cab-badge {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #922b21;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.ev-cab-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 6vw, 52px);
+  color: #c9a84c;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.ev-cab-sub {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #7a6550;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.ev-cab-drawer {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  border: 1px solid #3d2b1a;
+  padding: 8px 20px;
+  border-radius: 2px;
+}
+.ev-cab-nub {
+  width: 8px; height: 8px;
+  background: #5c3d22;
+  border-radius: 50%;
+}
+.ev-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px;
+  border-bottom: 1px solid #2d1f0e;
+  flex-wrap: wrap;
+}
+.ev-stat {
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+}
+.ev-stat b {
+  display: block;
+  font-size: 24px;
+  color: #c9a84c;
+  font-weight: 400;
+}
+.ev-stat small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #7a6550;
+  text-transform: uppercase;
+}
+.ev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 32px 24px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Evidence File Cards ── */
+.ev-card {
+  background: #f2ead8;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 2px 4px 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+}
+.ev-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 32px rgba(0,0,0,0.5);
+}
+.ev-card-critical {
+  box-shadow: 2px 4px 20px rgba(146,43,33,0.3), 0 0 0 1px rgba(146,43,33,0.2);
+}
+.ev-card-critical:hover {
+  box-shadow: 4px 8px 32px rgba(146,43,33,0.4), 0 0 0 1px rgba(146,43,33,0.3);
+}
+.ev-card-tab {
+  padding: 6px 16px;
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.ev-card-body {
+  padding: 16px 16px 12px;
+  flex: 1;
+}
+.ev-card-num {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a89880;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.ev-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #1e1510;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.ev-card-desc {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  color: #7a6550;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.ev-card-meta {
+  border-top: 1px solid #d8ccb0;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+.ev-card-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  color: #7a6550;
+  padding: 3px 0;
+  border-bottom: 1px dotted #e0d8c4;
+}
+.ev-card-row span:last-child { color: #4a3828; }
+.ev-card-status {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  border: 1px solid;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.ev-card-btn {
+  width: 100%;
+  padding: 10px;
+  background: #1e1510;
+  color: #c9a84c;
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ev-card-btn:hover { background: #3d2b1a; }
+
+/* ── Back button ── */
+.ev-back {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: block;
+  width: 100%;
+  padding: 12px 24px;
+  background: rgba(13,8,4,0.95);
+  backdrop-filter: blur(4px);
+  border: none;
+  border-bottom: 1px solid #3d2b1a;
+  color: #c9a84c;
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-align: left;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.ev-back:hover { background: #1a1108; }
+.ev-back-purple { border-bottom-color: #4a2070; }
+
+/* ── Background Themes ── */
+.ev-bg-dark  { background: #0d0804; color: #e8dcc8; }
+.ev-bg-amber { background: #1a1005; color: #e8dcc8; }
+.ev-bg-navy  { background: #060c14; color: #d0d8e4; }
+.ev-bg-forest{ background: #060d05; color: #c8d8c0; }
+.ev-bg-purple{ background: #0a0614; color: #d4c8e8; }
+
+/* ══════════════════════════════════════════
+   EVIDENCE 004 · DOSSIER STYLES
+   Operation: Midnight Escalation
+══════════════════════════════════════════ */
+
+/* ── Cover Page ── */
+.ev-dos-cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 32px;
+  background: radial-gradient(ellipse at center, #1a0e05 0%, #0a0602 100%);
+  text-align: center;
+  border-bottom: 3px solid #3d2b1a;
+}
+.ev-dos-seal {
+  width: 72px; height: 72px;
+  border: 2px solid #c9a84c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #c9a84c;
+  margin-bottom: 28px;
+}
+.ev-dos-eye {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #922b21;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.ev-dos-cnum {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #7a6550;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.ev-dos-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 7vw, 60px);
+  color: #c9a84c;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+.ev-dos-rule {
+  width: 80px;
+  height: 1px;
+  background: #5c3d22;
+  margin: 0 auto 28px;
+}
+.ev-dos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+  text-align: left;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+.ev-dos-grid > div label {
+  display: block;
+  font-family: 'Special Elite', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ev-dos-grid > div span {
+  font-family: 'Courier Prime', monospace;
+  font-size: 14px;
+  color: #e8dcc8;
+}
+.ev-warn-stamp {
+  border: 2px solid #922b21;
+  color: #922b21;
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+.ev-scroll-hint {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  animation: pulse-hint 2s ease-in-out infinite;
+}
+@keyframes pulse-hint {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ── Case Summary Page ── */
+.ev-case-summary {
+  background: #f2ead8;
+  color: #1e1510;
+  padding: 60px clamp(24px, 6vw, 80px);
+  max-width: 820px;
+  margin: 0 auto;
+  font-family: 'Courier Prime', monospace;
+}
+.ev-cs-header {
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 3px double #4a3828;
+  padding-bottom: 24px;
+}
+.ev-cs-classification {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #922b21;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.ev-cs-status {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #7a6550;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.ev-cs-main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 5vw, 36px);
+  color: #1e1510;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.ev-cs-subtitle {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #7a6550;
+  text-transform: uppercase;
+}
+.ev-cs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid #4a3828;
+  margin-bottom: 32px;
+}
+.ev-cs-field {
+  padding: 12px 16px;
+  border-right: 1px solid #cfc3a5;
+  border-bottom: 1px solid #cfc3a5;
+}
+.ev-cs-field:nth-child(even) { border-right: none; }
+.ev-cs-field label {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #a89880;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ev-cs-field .ev-csv {
+  font-size: 13px;
+  color: #1e1510;
+  font-weight: 700;
+}
+.ev-cs-field .ev-csv-r {
+  font-size: 22px;
+  color: #922b21;
+  font-weight: 700;
+  font-family: 'Courier Prime', monospace;
+}
+.ev-cs-section-title {
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #922b21;
+  text-transform: uppercase;
+  border-bottom: 1px solid #cfc3a5;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  margin-top: 32px;
+}
+.ev-cs-body {
+  font-size: 13px;
+  color: #2d1f0e;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.ev-cs-stability {
+  background: #fff;
+  border: 1px solid #cfc3a5;
+  padding: 20px;
+  margin-bottom: 24px;
+  font-size: 12px;
+}
+.ev-cs-stability-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px dotted #e0d8c4;
+  font-size: 11px;
+}
+.ev-cs-stability-row:last-child { border-bottom: none; }
+.ev-cs-stability-time {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  color: #7a6550;
+  width: 50px;
+  flex-shrink: 0;
+}
+.ev-cs-stability-bar {
+  flex: 1;
+  height: 16px;
+  background: #2d4a28;
+  border-radius: 2px;
+  position: relative;
+}
+.ev-cs-stability-bar.warning { background: #8b3a1e; }
+.ev-cs-stability-bar.closed  { background: #2d4a28; }
+.ev-cs-stability-label {
+  font-size: 10px;
+  color: #4a3828;
+  width: 130px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.ev-cs-warning-row {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 11px;
+  color: #922b21;
+  letter-spacing: 2px;
+}
+.ev-cs-bullet-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px 16px;
+  margin-bottom: 16px;
+  padding: 0;
+}
+.ev-cs-bullet-list li {
+  font-size: 11px;
+  color: #4a3828;
+  padding: 2px 0;
+}
+.ev-cs-bullet-list li::before {
+  content: '• ';
+  color: #922b21;
+}
+.ev-cs-footer {
+  text-align: center;
+  border-top: 3px double #4a3828;
+  padding-top: 20px;
+  margin-top: 32px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #a89880;
+  text-transform: uppercase;
+}
+
+/* ── Incident Report ── */
+.ev-ir {
+  background: #ede3c8;
+  padding: 60px clamp(24px, 6vw, 80px);
+  max-width: 820px;
+  margin: 0 auto;
+  font-family: 'Courier Prime', monospace;
+  border-top: 4px solid #1e1510;
+  border-bottom: 4px solid #1e1510;
+}
+.ev-ir-badge {
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #922b21;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.ev-ir-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 4vw, 30px);
+  color: #1e1510;
+  margin-bottom: 24px;
+  line-height: 1.3;
+  border-bottom: 2px solid #4a3828;
+  padding-bottom: 16px;
+}
+.ev-ir-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border: 1px solid #4a3828;
+  margin-bottom: 28px;
+}
+.ev-ir-field {
+  padding: 12px 14px;
+  border-right: 1px solid #cfc3a5;
+  border-bottom: 1px solid #cfc3a5;
+}
+.ev-ir-field:nth-child(3n) { border-right: none; }
+.ev-ir-field label {
+  display: block;
+  font-size: 7px;
+  letter-spacing: 3px;
+  color: #a89880;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ev-ir-field .v {
+  font-size: 12px;
+  color: #1e1510;
+}
+.ev-ir-field .vb {
+  font-size: 22px;
+  color: #922b21;
+  font-weight: 700;
+}
+.ev-ir-notes {
+  font-size: 13px;
+  color: #2d1f0e;
+  line-height: 1.9;
+  white-space: pre-wrap;
+}
+
+/* ── Warning Page ── */
+.ev-warn-pg {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 32px;
+  background: #0a0602;
+  text-align: center;
+  gap: 24px;
+}
+.ev-warn-title {
+  font-family: 'Special Elite', monospace;
+  font-size: clamp(24px, 5vw, 40px);
+  letter-spacing: 8px;
+  color: #922b21;
+  text-transform: uppercase;
+}
+.ev-warn-rule {
+  width: 60px;
+  height: 1px;
+  background: #3d1010;
+}
+.ev-warn-body {
+  font-family: 'Courier Prime', monospace;
+  font-size: clamp(13px, 2.5vw, 16px);
+  color: #8b3a1e;
+  line-height: 2;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* ── Transcript ── */
+.ev-tx {
+  background: #f5f0e4;
+  font-family: 'Courier Prime', monospace;
+  padding: 0 0 60px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.ev-tx-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: #1e1510;
+  border-bottom: 2px solid #c9a84c;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: sticky;
+  top: 44px;
+  z-index: 10;
+}
+.ev-tx-ht {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #c9a84c;
+  text-transform: uppercase;
+}
+.ev-tx-hm {
+  font-size: 11px;
+  color: #7a6550;
+  font-family: 'Courier Prime', monospace;
+}
+.ev-tx-chapter {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #a89880;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 24px 32px 12px;
+  border-bottom: 1px dotted #cfc3a5;
+  margin-bottom: 8px;
+}
+.ev-tx-body {
+  padding: 16px 32px;
+}
+
+/* ── Message Bubbles ── */
+.ev-te {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  max-width: 75%;
+}
+.ev-te.ev-r {
+  align-items: flex-end;
+  margin-left: auto;
+}
+.ev-ts {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #a89880;
+  margin-bottom: 3px;
+  padding: 0 4px;
+}
+.ev-who {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #7a6550;
+  margin-bottom: 3px;
+  padding: 0 4px;
+  text-transform: uppercase;
+}
+.ev-tb {
+  background: #fff;
+  border: 1px solid #d8ccb0;
+  border-radius: 12px 12px 12px 2px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1e1510;
+  line-height: 1.6;
+  box-shadow: 1px 2px 8px rgba(44,36,22,0.08);
+}
+.ev-te.ev-r .ev-tb {
+  background: #1e1510;
+  color: #e8dcc8;
+  border-color: #3d2b1a;
+  border-radius: 12px 12px 2px 12px;
+}
+.ev-tx-end {
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #a89880;
+  text-transform: uppercase;
+  padding: 32px;
+  border-top: 2px solid #cfc3a5;
+  margin-top: 24px;
+}
+
+/* ── Case Closed ── */
+.ev-case-closed {
+  background: #0a0602;
+  padding: 80px 32px;
+  text-align: center;
+}
+.ev-cc-stamp {
+  font-family: 'Special Elite', monospace;
+  font-size: clamp(28px, 6vw, 48px);
+  letter-spacing: 8px;
+  color: #922b21;
+  text-transform: uppercase;
+  border: 4px solid #922b21;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  transform: rotate(-3deg);
+  margin-bottom: 32px;
+  box-shadow: 0 0 0 2px rgba(146,43,33,0.2);
+}
+.ev-cc-meta {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  color: #5c3d22;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+/* ── Evidence 001–003/005 shared views ── */
+.ev-ir-notes br { display: block; content: ''; margin-bottom: 12px; }
+
+/* ── Overlay ── */
+#ev-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0a0602;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 200;
+  transition: opacity 0.3s ease;
+}
+#ev-overlay.active { opacity: 1; pointer-events: all; }
+#ev-overlay.ev-on  { opacity: 1; pointer-events: all; }
+
+/* ── Snapshot Evidence (005) ── */
+.ev-snap-head {
+  text-align: center;
+  padding: 60px 24px 32px;
+}
+.ev-snap-eyebrow {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #7050a0;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.ev-snap-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 5vw, 40px);
+  color: #c0a8e0;
+  margin-bottom: 8px;
+}
+.ev-snap-sub {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #7050a0;
+  text-transform: uppercase;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .ev-dos-grid { grid-template-columns: 1fr; }
+  .ev-cs-grid { grid-template-columns: 1fr; }
+  .ev-ir-grid { grid-template-columns: 1fr 1fr; }
+  .ev-ir-field:nth-child(3n) { border-right: 1px solid #cfc3a5; }
+  .ev-ir-field:nth-child(2n) { border-right: none; }
+  .ev-cs-bullet-list { grid-template-columns: 1fr 1fr; }
+  .ev-te { max-width: 90%; }
+  .ev-tx-body { padding: 12px 16px; }
+}
+@media (max-width: 420px) {
+  .ev-cs-bullet-list { grid-template-columns: 1fr; }
+  .ev-ir-grid { grid-template-columns: 1fr; }
+  .ev-ir-field { border-right: none !important; }
+}
+
+/* ══════════════════════════════════════════
+   EVIDENCE 003 · THE LORE™ — TIMELINE
+══════════════════════════════════════════ */
+
+.ev-back-forest {
+  border-bottom-color: #2d4a28;
+  color: #6aaf5a;
+}
+.ev-back-forest:hover { color: #8dd47a; }
+
+.ev-forest-head {
+  text-align: center;
+  padding: 60px 24px 40px;
+  background: linear-gradient(to bottom, #030804, #060d05 80%);
+  border-bottom: 2px solid #1e3018;
+}
+.ev-forest-eyebrow {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #3a6830;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.ev-forest-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 7vw, 56px);
+  color: #7ab86a;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.ev-forest-sub {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #3a6830;
+  text-transform: uppercase;
+}
+
+.ev-forest-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 clamp(16px,5vw,48px) 80px;
+}
+
+.ev-lore-intro {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: #5a8050;
+  text-align: center;
+  padding: 32px 0 48px;
+  line-height: 1.8;
+  border-bottom: 1px solid #1e3018;
+  margin-bottom: 0;
+}
+
+/* ── Timeline Spine ── */
+.ev-timeline {
+  position: relative;
+  padding: 48px 0 32px;
+}
+.ev-timeline::before {
+  content: '';
+  position: absolute;
+  left: clamp(24px, 6vw, 48px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom,
+    transparent 0,
+    #2d4a28 5%,
+    #2d4a28 90%,
+    transparent 100%
+  );
+}
+
+/* ── Timeline Entry ── */
+.ev-tl-entry {
+  display: flex;
+  gap: clamp(20px, 4vw, 40px);
+  margin-bottom: 0;
+  position: relative;
+  align-items: flex-start;
+}
+
+/* ── Marker (dot on the line) ── */
+.ev-tl-marker {
+  flex-shrink: 0;
+  width: clamp(28px, 5vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 32px;
+  position: relative;
+  z-index: 2;
+}
+.ev-tl-marker::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #4a8a3a;
+  border: 2px solid #7ab86a;
+  box-shadow: 0 0 10px rgba(122,184,106,0.3);
+  flex-shrink: 0;
+}
+.ev-tl-marker-open::after {
+  background: transparent;
+  border-color: #3a6030;
+  box-shadow: none;
+  animation: pulse-open 2.5s ease-in-out infinite;
+}
+@keyframes pulse-open {
+  0%, 100% { border-color: #3a6030; box-shadow: none; }
+  50% { border-color: #7ab86a; box-shadow: 0 0 12px rgba(122,184,106,0.4); }
+}
+
+/* ── Timeline Content Card ── */
+.ev-tl-content {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #1e3018;
+  border-radius: 3px;
+  padding: 24px 28px;
+  margin: 16px 0 32px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.ev-tl-content:hover {
+  border-color: #2d4a28;
+  background: rgba(255,255,255,0.05);
+}
+
+/* ── Era label (Chapter heading) ── */
+.ev-tl-era {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #4a8a3a;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* ── Date badge ── */
+.ev-tl-date {
+  font-family: 'Special Elite', monospace;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #7ab86a;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ev-tl-date-emoji {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* ── Status line ── */
+.ev-tl-status {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  color: #3a6030;
+  font-style: italic;
+  margin-bottom: 14px;
+  border-left: 2px solid #2d4a28;
+  padding-left: 10px;
+}
+
+/* ── Event text ── */
+.ev-tl-event {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  color: #c0d8b8;
+  line-height: 1.9;
+  margin-bottom: 14px;
+  white-space: pre-line;
+}
+.ev-tl-event p { margin-bottom: 10px; }
+.ev-tl-event em { color: #7ab86a; font-style: italic; }
+.ev-tl-event strong { color: #a8d498; font-style: normal; }
+
+/* ── Bullet list inside event ── */
+.ev-tl-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 14px;
+}
+.ev-tl-bullets li {
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  color: #7ab86a;
+  padding: 3px 0;
+  display: flex;
+  gap: 8px;
+}
+.ev-tl-bullets li::before { content: '·'; color: #3a6830; }
+
+/* ── Blockquote ── */
+.ev-tl-quote {
+  background: rgba(0,0,0,0.3);
+  border-left: 3px solid #4a8a3a;
+  padding: 10px 16px;
+  margin: 12px 0;
+  font-family: 'Courier Prime', monospace;
+  font-size: 13px;
+  color: #7ab86a;
+  font-style: italic;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Note (archival footnote) ── */
+.ev-tl-note {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #3a6030;
+  border-top: 1px solid #1e3018;
+  padding-top: 10px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+/* ── Trademark ── */
+.ev-tm {
+  font-size: 0.6em;
+  vertical-align: super;
+  color: #4a8a3a;
+  letter-spacing: 0;
+}
+
+/* ── Special: blocked chapter ── */
+.ev-tl-content.ev-tl-redacted {
+  border-color: #5a2020;
+  background: rgba(90,32,32,0.08);
+}
+.ev-tl-content.ev-tl-redacted:hover {
+  border-color: #8b3a1e;
+  background: rgba(90,32,32,0.12);
+}
+.ev-tl-content.ev-tl-redacted .ev-tl-era { color: #8b3a1e; }
+.ev-tl-content.ev-tl-redacted .ev-tl-date { color: #c05040; }
+.ev-tl-content.ev-tl-redacted .ev-tl-event { color: #c8a8a0; }
+.ev-tl-content.ev-tl-redacted .ev-tl-status { color: #8b3a1e; border-left-color: #5a2020; }
+.ev-tl-content.ev-tl-redacted .ev-tl-note { color: #5a2020; border-top-color: #3d1010; }
+.ev-tl-marker.ev-tl-marker-red::after {
+  background: #5a2020;
+  border-color: #c05040;
+  box-shadow: 0 0 10px rgba(192,80,64,0.3);
+}
+
+/* ── Special: open/ongoing chapter ── */
+.ev-tl-content.ev-tl-open {
+  border-color: #1a3028;
+  border-style: dashed;
+}
+.ev-tl-content.ev-tl-open .ev-tl-event { color: #5a8050; }
+
+/* ── Footer ── */
+.ev-forest-footer {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #2d4a28;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 32px;
+  border-top: 1px solid #1e3018;
+  margin-top: 16px;
+}
+
+@media (max-width: 500px) {
+  .ev-timeline::before { left: 16px; }
+  .ev-tl-content { padding: 16px 18px; }
+}
+
+/* ══════════════════════════════════════════
+   EVIDENCE 001 · REACTION VAULT
+   Classified artifact archive
+══════════════════════════════════════════ */
+
+.ev-back-amber { color: #c9a84c; border-bottom-color: #3d2b1a; }
+.ev-back-amber:hover { color: #e8cc6c; }
+
+/* ── Vault Landing ── */
+.ev-rx-landing {
+  background: radial-gradient(ellipse at 50% 0%, #1a1205 0%, #0a0702 100%);
+  border-bottom: 2px solid #3d2b1a;
+  padding: 60px clamp(20px,6vw,80px) 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.ev-rx-eyebrow {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.ev-rx-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 7vw, 58px);
+  color: #c9a84c;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  line-height: 1.1;
+}
+.ev-rx-sub {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.ev-rx-rule { width: 100%; height: 1px; background: #2d1f0e; margin-bottom: 28px; }
+.ev-rx-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: #2d1f0e;
+  border: 1px solid #2d1f0e;
+  margin-bottom: 28px;
+}
+.ev-rx-stat {
+  background: #0a0702;
+  padding: 14px 18px;
+}
+.ev-rx-stat label {
+  display: block;
+  font-family: 'Special Elite', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.ev-rx-stat span {
+  font-family: 'Courier Prime', monospace;
+  font-size: 13px;
+  color: #c9a84c;
+}
+.ev-rx-rule2 { width: 100%; height: 1px; background: #2d1f0e; }
+
+/* ── Artifact Count Banner ── */
+.ev-rx-count-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0 0;
+}
+.ev-rx-count-num {
+  font-family: 'Courier Prime', monospace;
+  font-size: 36px;
+  color: #c9a84c;
+  line-height: 1;
+  font-weight: 700;
+}
+.ev-rx-count-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+/* ── Artifact Grid ── */
+.ev-rx-grid-wrap {
+  background: #080603;
+  padding: clamp(20px,4vw,48px);
+}
+.ev-rx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Artifact Card ── */
+.ev-rx-card {
+  background: #1e1810;
+  border: 1px solid #2d1f0e;
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.ev-rx-card:hover {
+  transform: translateY(-3px);
+  border-color: #7a5520;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.15);
+}
+.ev-rx-card:hover .ev-rx-card-reveal {
+  opacity: 1;
+}
+.ev-rx-img-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #2a2218;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ev-rx-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  filter: none;
+  transition: transform 0.2s;
+}
+.ev-rx-card:hover .ev-rx-img-wrap img {
+  filter: none;
+  transform: scale(1.03);
+}
+.ev-rx-card-reveal {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,7,2,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #c9a84c;
+  text-transform: uppercase;
+}
+.ev-rx-card-body {
+  padding: 10px 12px;
+  flex: 1;
+  border-top: 1px solid #1e1408;
+}
+.ev-rx-card-num {
+  font-family: 'Special Elite', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.ev-rx-card-name {
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  color: #c9a84c;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.ev-rx-card-status {
+  font-family: 'Special Elite', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #3a6830;
+  text-transform: uppercase;
+}
+.ev-rx-card-btn {
+  width: 100%;
+  padding: 8px;
+  background: #0a0702;
+  border: none;
+  border-top: 1px solid #1e1408;
+  color: #5c3d22;
+  font-family: 'Special Elite', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.ev-rx-card:hover .ev-rx-card-btn {
+  background: #1a1005;
+  color: #c9a84c;
+}
+
+/* ── Dossier Modal ── */
+#ev-rx-dossier {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 600;
+  background: rgba(0,0,0,0.88);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  backdrop-filter: blur(3px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+#ev-rx-dossier.open { display: flex; }
+.ev-rx-dos-inner {
+  background: #0f0a05;
+  border: 1px solid #3d2b1a;
+  border-radius: 2px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.8);
+  flex-shrink: 0;
+  margin: auto;
+}
+.ev-rx-dos-top {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #2d1f0e;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.ev-rx-dos-badge {
+  font-family: 'Special Elite', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ev-rx-dos-codename {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(18px, 3.5vw, 26px);
+  color: #c9a84c;
+  line-height: 1.2;
+}
+.ev-rx-dos-close {
+  background: none;
+  border: 1px solid #3d2b1a;
+  color: #5c3d22;
+  font-family: 'Special Elite', monospace;
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.ev-rx-dos-close:hover { color: #c9a84c; border-color: #7a5520; }
+.ev-rx-dos-rule { width: 100%; height: 1px; background: #2d1f0e; }
+.ev-rx-dos-img {
+  padding: 24px;
+  background: #080603;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+.ev-rx-dos-img img {
+  max-width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+.ev-rx-dos-meta {
+  padding: 0 24px;
+  border-top: 1px solid #2d1f0e;
+  border-bottom: 1px solid #2d1f0e;
+}
+.ev-rx-dos-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #1a1005;
+  gap: 12px;
+}
+.ev-rx-dos-meta-row:last-child { border-bottom: none; }
+.ev-rx-dos-meta-row label {
+  font-family: 'Special Elite', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.ev-rx-dos-meta-row span {
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  color: #c9a84c;
+  text-align: right;
+}
+.ev-rx-dos-notes {
+  padding: 16px 24px 20px;
+  border-top: 1px solid #2d1f0e;
+}
+.ev-rx-dos-notes label {
+  display: block;
+  font-family: 'Special Elite', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #5c3d22;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.ev-rx-dos-notes p {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: #a89060;
+  line-height: 1.7;
+}
+.ev-rx-dos-footer {
+  padding: 12px 24px;
+  background: #080603;
+  border-top: 1px solid #1a1005;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.ev-rx-dos-nav {
+  display: flex;
+  gap: 8px;
+}
+.ev-rx-dos-nav-btn {
+  background: #1a1005;
+  border: 1px solid #2d1f0e;
+  color: #5c3d22;
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.ev-rx-dos-nav-btn:hover { color: #c9a84c; border-color: #7a5520; background: #0f0a05; }
+.ev-rx-dos-counter {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  color: #3d2b1a;
+}
+
+/* ── Threat Level colors ── */
+.ev-tl-green  { color: #4a8a3a; }
+.ev-tl-yellow { color: #c9a84c; }
+.ev-tl-orange { color: #c87020; }
+.ev-tl-red    { color: #c03020; }
+.ev-tl-black  { color: #888; }
+
+/* ── Grid footer ── */
+.ev-rx-footer {
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #2d1f0e;
+  text-transform: uppercase;
+  padding: 32px 20px;
+  border-top: 1px solid #1a1005;
+}
+
+@media (max-width: 480px) {
+  .ev-rx-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+  .ev-rx-dos-inner { max-width: 100%; }
+}
+
+/* ══════════════════════════════════════════
+   BUG FIXES · Reaction Vault Visibility
+══════════════════════════════════════════ */
+
+/* Cards need visible backgrounds against the dark grid wrap */
+.ev-rx-card {
+  background: #1e1408 !important;
+  border: 1px solid #4a3010 !important;
+}
+.ev-rx-card:hover {
+  border-color: #c9a84c !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.2) !important;
+}
+.ev-rx-card-body {
+  background: #1e1408;
+  border-top: 1px solid #3a2510 !important;
+}
+.ev-rx-card-btn {
+  background: #14100a !important;
+  border-top: 1px solid #3a2510 !important;
+  color: #7a5520 !important;
+}
+.ev-rx-card:hover .ev-rx-card-btn {
+  background: #2a1c08 !important;
+  color: #c9a84c !important;
+}
+.ev-rx-grid-wrap {
+  background: #0d0a06 !important;
+}
+
+/* Landing area readable */
+.ev-rx-landing {
+  background: #0f0a04 !important;
+}
+.ev-rx-stats {
+  background: #1e1408 !important;
+}
+.ev-rx-stat {
+  background: #0f0a04 !important;
+}
+
+/* Ensure scrolling works inside the view */
+#ev-001.ev-active {
+  overflow-y: auto;
+  height: auto;
+  min-height: 100vh;
+}
+
+/* ── Image container explicit white-ish bg so images are always visible ── */
+#ev-001 .ev-rx-img-wrap {
+  background: #f0e8d8 !important;
+}
+#ev-001 .ev-rx-img-wrap img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+#ev-001 .ev-rx-card {
+  background: #1a1208 !important;
+  border: 1px solid #5a3820 !important;
+}
+#ev-001 .ev-rx-card-body {
+  background: #1a1208 !important;
+}
+#ev-001 .ev-rx-grid-wrap {
+  background: #100c06 !important;
+}
+/* Dossier image also on light background */
+.ev-rx-dos-img {
+  background: #f0e8d8 !important;
+}
+.ev-rx-dos-img img {
+  opacity: 1 !important;
+  filter: none !important;
+}
