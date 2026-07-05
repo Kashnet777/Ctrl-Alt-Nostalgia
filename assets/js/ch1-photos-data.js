@@ -18,7 +18,7 @@ const PHOTOS = [
   { file: 'Photo (9).jpg',  caption: "Someone didn't like the taste of da coffee" },
   { file: 'Photo (10).jpg', caption: "Kaun hai phone pe😏, hume bhi bata na or are you tryna be cool" },
   { file: 'Photo (11).jpg', caption: "Secret call ke baad innocent pic click karana - ✅" },
-  { file: 'Photo (12).jpg', caption: "Khate hue instaan ki pic almost clicked" },
+  { file: 'Photo (12).jpg', caption: "Khate hue insaan ki pic almost clicked" },
   { file: 'Photo (13).jpg', caption: "Our most dangerous and capable spy aquiring important evidences (Aka Lady-HAM)" },
   { file: 'Photo (14).jpg', caption: "Itna time nahi lgta group ke founders and members ki first and only pic together" },
   { file: 'Photo (15).jpg', caption: "Image that I begged for" },
