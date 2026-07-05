@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   IV. BUSINESS IDEAS
+   IV. VENTURE FILES
 ═══════════════════════════════════════════ */
 .notebook-stack { display: flex; flex-direction: column; gap: 48px; }
 
@@ -35,3 +35,14 @@
 .nb-bar-fill.green { background: var(--forest); opacity: 0.6; }
 
 .nb-doodle { position: absolute; font-family: 'Caveat', cursive; font-size: 13px; color: var(--ink-faded); opacity: 0.45; pointer-events: none; transform: rotate(var(--rot)); }
+
+.nb-status-badge {
+  display: inline-block; margin-top: 8px;
+  font-family: 'Special Elite', monospace; font-size: 8.5px; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--rust-dim);
+  color: var(--rust-dim); border-radius: 2px; position: relative; z-index: 1;
+}
+.nb-status-badge.grn { border-color: var(--forest); color: var(--forest); }
+.nb-status-badge.blue { border-color: var(--stamp-blue); color: var(--stamp-blue); }
+.nb-status-badge.red { border-color: var(--stamp-red); color: var(--stamp-red); }
+.nb-derailed { font-family: 'Caveat', cursive; font-style: italic; font-size: 15px; color: var(--ink-faded); margin: 6px 0 0; }

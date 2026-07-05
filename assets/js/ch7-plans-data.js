@@ -10,7 +10,7 @@ const OPERATIONS = [
     brief: "A proper road trip. No destination is final, no playlist is agreed upon, and every unnecessary stop is mandatory."
   },
   {
-    id: '002', title: 'Movie Night Protocol', status: 'Pending', statusColor: 'neutral',
+    id: '002', title: 'Operation: Big Screen', status: 'Pending', statusColor: 'neutral',
     brief: "Watch a movie together without turning the experience into an ongoing commentary track."
   },
   {
