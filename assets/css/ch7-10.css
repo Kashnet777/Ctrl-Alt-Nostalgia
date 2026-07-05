@@ -100,6 +100,8 @@
 .letter-date { font-family: 'Special Elite', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--ink-muted); margin-bottom: 40px; text-transform: uppercase; opacity: 0.6; }
 .letter-body { font-family: 'IM Fell English', serif; font-size: 16px; color: var(--ink); line-height: 2.2; }
 .letter-body p { margin-bottom: 24px; }
+.letter-body ul, .letter-body ol { margin: 0 0 24px; padding-left: 28px; }
+.letter-body ul li, .letter-body ol li { margin-bottom: 10px; }
 .letter-sig { margin-top: 48px; font-family: 'Caveat', cursive; font-size: 28px; color: var(--rust); font-weight: 600; }
 
 .qr-note { margin-top: 40px; text-align: center; padding: 20px; border: 1px dashed var(--paper-aged); }
