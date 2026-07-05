@@ -338,38 +338,43 @@
 
     </div><!-- /ev-001 -->
 
-    <!-- REACTION DOSSIER MODAL -->
-    <div id="ev-rx-dossier">
-      <div class="ev-rx-dos-inner" id="ev-rx-dos-inner">
-        <div class="ev-rx-dos-top">
-          <div>
-            <div class="ev-rx-dos-badge" id="dos-num"></div>
-            <div class="ev-rx-dos-codename" id="dos-codename"></div>
+    <!-- ══════════════════════════════
+         EVIDENCE 001b — REACTION DOSSIER SCREEN
+         Same amber division, its own full page instead of a popup
+    ══════════════════════════════ -->
+    <div id="ev-rx-dossier" class="ev-view ev-bg-amber">
+      <button class="ev-back ev-back-amber" onclick="closeDossier()">← Back to Reaction Vault</button>
+      <div class="ev-rx-dos-page">
+        <div class="ev-rx-dos-inner" id="ev-rx-dos-inner">
+          <div class="ev-rx-dos-top">
+            <div>
+              <div class="ev-rx-dos-badge" id="dos-num"></div>
+              <div class="ev-rx-dos-codename" id="dos-codename"></div>
+            </div>
           </div>
-          <button class="ev-rx-dos-close" onclick="closeDossier()">✕</button>
-        </div>
-        <div class="ev-rx-dos-rule"></div>
-        <div class="ev-rx-dos-img"><img id="dos-img" src="" alt=""></div>
-        <div class="ev-rx-dos-meta">
-          <div class="ev-rx-dos-meta-row"><label>Classification</label><span id="dos-class"></span></div>
-          <div class="ev-rx-dos-meta-row"><label>Threat Level</label><span id="dos-threat"></span></div>
-          <div class="ev-rx-dos-meta-row"><label>Status</label><span id="dos-status"></span></div>
-          <div class="ev-rx-dos-meta-row"><label>Deployment</label><span id="dos-deploy"></span></div>
-          <div class="ev-rx-dos-meta-row"><label>Archive</label><span>Evidence 001 · Reaction Vault</span></div>
-        </div>
-        <div class="ev-rx-dos-notes">
-          <label>Field Notes</label>
-          <p id="dos-notes"></p>
-        </div>
-        <div class="ev-rx-dos-footer">
-          <div class="ev-rx-dos-nav">
-            <button class="ev-rx-dos-nav-btn" onclick="navDossier(-1)">← Prev</button>
-            <button class="ev-rx-dos-nav-btn" onclick="navDossier(1)">Next →</button>
+          <div class="ev-rx-dos-rule"></div>
+          <div class="ev-rx-dos-img"><img id="dos-img" src="" alt=""></div>
+          <div class="ev-rx-dos-meta">
+            <div class="ev-rx-dos-meta-row"><label>Classification</label><span id="dos-class"></span></div>
+            <div class="ev-rx-dos-meta-row"><label>Threat Level</label><span id="dos-threat"></span></div>
+            <div class="ev-rx-dos-meta-row"><label>Status</label><span id="dos-status"></span></div>
+            <div class="ev-rx-dos-meta-row"><label>Deployment</label><span id="dos-deploy"></span></div>
+            <div class="ev-rx-dos-meta-row"><label>Archive</label><span>Evidence 001 · Reaction Vault</span></div>
           </div>
-          <div class="ev-rx-dos-counter" id="dos-counter"></div>
+          <div class="ev-rx-dos-notes">
+            <label>Field Notes</label>
+            <p id="dos-notes"></p>
+          </div>
+          <div class="ev-rx-dos-footer">
+            <div class="ev-rx-dos-nav">
+              <button class="ev-rx-dos-nav-btn" onclick="navDossier(-1)">← Prev</button>
+              <button class="ev-rx-dos-nav-btn" onclick="navDossier(1)">Next →</button>
+            </div>
+            <div class="ev-rx-dos-counter" id="dos-counter"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </div><!-- /ev-rx-dossier -->
 
     <!-- ══════════════════════════════
          EVIDENCE 003 — THE LORE
@@ -1113,82 +1118,32 @@ And somehow... the story is still being written.</div>
       <div class="ev-snap-head">
         <div class="ev-snap-eyebrow">Evidence 004 · Visual Division</div>
         <h2 class="ev-snap-title">Snapshot Archive</h2>
-        <p class="ev-snap-sub">Photographic Evidence · 6 Exhibits on Record</p>
+        <p class="ev-snap-sub">Photographic Evidence · 18 Exhibits on Record</p>
       </div>
-      <div class="ev-snap-grid">
-
-        <div class="ev-snap-item">
-          <div class="ev-snap-washi" style="top:-10px;left:26%;width:58px;"></div>
-          <div class="ev-snap-frame">
-            <div class="ev-snap-photo">
-              <!-- 📌 REPLACE: <img src="images/screenshots/snap1.png" alt=""> -->
-              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap1.png</small></span>
-            </div>
-            <div class="ev-snap-cap">"Nobody remembers the original topic."</div>
-            <div class="ev-snap-ts">2:07 AM · Peak Intelligence Hours</div>
-          </div>
-        </div>
-
-        <div class="ev-snap-item" style="margin-top:26px;">
-          <div class="ev-snap-frame">
-            <div class="ev-snap-photo">
-              <!-- 📌 REPLACE: <img src="images/screenshots/snap2.png" alt=""> -->
-              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap2.png</small></span>
-            </div>
-            <div class="ev-snap-cap">"Sent as a joke. Not received as a joke."</div>
-            <div class="ev-snap-ts">Exhibit B · Time Unknown</div>
-          </div>
-        </div>
-
-        <div class="ev-snap-item">
-          <div class="ev-snap-washi" style="top:-10px;right:18%;width:52px;"></div>
-          <div class="ev-snap-frame">
-            <div class="ev-snap-photo">
-              <!-- 📌 REPLACE: <img src="images/screenshots/snap3.png" alt=""> -->
-              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap3.png</small></span>
-            </div>
-            <div class="ev-snap-cap">"The group had opinions. Many opinions."</div>
-            <div class="ev-snap-ts">Group Chaos · Archived</div>
-          </div>
-        </div>
-
-        <div class="ev-snap-item" style="margin-top:14px;">
-          <div class="ev-snap-frame">
-            <div class="ev-snap-photo">
-              <!-- 📌 REPLACE: <img src="images/screenshots/snap4.png" alt=""> -->
-              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap4.png</small></span>
-            </div>
-            <div class="ev-snap-cap">"Escalated quickly. As always."</div>
-            <div class="ev-snap-ts">Evidence Tag #04</div>
-          </div>
-        </div>
-
-        <div class="ev-snap-item">
-          <div class="ev-snap-washi" style="top:-10px;left:32%;width:60px;"></div>
-          <div class="ev-snap-frame">
-            <div class="ev-snap-photo">
-              <!-- 📌 REPLACE: <img src="images/screenshots/snap5.png" alt=""> -->
-              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap5.png</small></span>
-            </div>
-            <div class="ev-snap-cap">"Someone started a poll at 1 AM."</div>
-            <div class="ev-snap-ts">Democratic Process · Late</div>
-          </div>
-        </div>
-
-        <div class="ev-snap-item" style="margin-top:20px;">
-          <div class="ev-snap-frame">
-            <div class="ev-snap-photo">
-              <!-- 📌 REPLACE: <img src="images/screenshots/snap6.png" alt=""> -->
-              <div class="ev-snap-ph">📱</div><span>add screenshot here<br><small>images/screenshots/snap6.png</small></span>
-            </div>
-            <div class="ev-snap-cap">"The reaction that started everything."</div>
-            <div class="ev-snap-ts">Ground Zero · Unclassified</div>
-          </div>
-        </div>
-
-      </div><!-- /ev-snap-grid -->
-      <div class="ev-snap-footer">Evidence 004 · Snapshot Archive · Replace placeholders with real screenshots in images/screenshots/</div>
+      <div class="ev-snap-grid-wrap">
+        <div id="snap-root" class="ev-snap-grid"></div>
+      </div>
+      <div class="ev-snap-footer">Evidence 004 · Snapshot Archive · 18 Exhibits · tap any polaroid to view full image</div>
     </div><!-- /ev-004 -->
+
+    <!-- ══════════════════════════════
+         EVIDENCE 004b — SNAPSHOT VIEWER
+         Same purple division, full exhibit view
+    ══════════════════════════════ -->
+    <div id="ev-snap" class="ev-view ev-bg-purple">
+      <button class="ev-back ev-back-purple" onclick="closeSnapViewer()">← Back to Snapshot Archive</button>
+      <div class="ev-snap-viewer-page">
+        <div class="ev-snap-viewer-badge" id="snap-view-num"></div>
+        <div class="ev-snap-viewer-img"><img id="snap-view-img" src="" alt=""></div>
+        <div class="ev-snap-viewer-footer">
+          <div class="ev-snap-viewer-nav">
+            <button class="ev-rx-dos-nav-btn" onclick="navSnap(-1)">← Prev</button>
+            <button class="ev-rx-dos-nav-btn" onclick="navSnap(1)">Next →</button>
+          </div>
+          <div class="ev-rx-dos-counter" id="snap-view-counter"></div>
+        </div>
+      </div>
+    </div><!-- /ev-snap -->
 
   </div><!-- /page-p5 -->
 
@@ -1336,6 +1291,7 @@ const RX_DATA = [
 ];
 
 let currentDossierIndex = 0;
+let evRxScrollY = 0;
 
 function buildReactionGrid() {
   const grid = document.getElementById('ev-rx-grid');
@@ -1360,6 +1316,16 @@ function buildReactionGrid() {
   });
 }
 
+function evWipeTransition(fn) {
+  var ov = document.getElementById('ev-overlay');
+  if (!ov) { fn(); return; }
+  ov.classList.add('ev-on');
+  setTimeout(function() {
+    fn();
+    setTimeout(function() { ov.classList.remove('ev-on'); }, 360);
+  }, 300);
+}
+
 function openDossier(index) {
   currentDossierIndex = index;
   const r = RX_DATA[index];
@@ -1373,13 +1339,29 @@ function openDossier(index) {
   document.getElementById('dos-deploy').textContent = r.deploy;
   document.getElementById('dos-notes').textContent = r.notes;
   document.getElementById('dos-counter').textContent = `${index + 1} / ${RX_DATA.length}`;
-  const modal = document.getElementById('ev-rx-dossier');
-  modal.classList.add('open');
-  modal.scrollTop = 0;
+
+  const dossier = document.getElementById('ev-rx-dossier');
+  const isAlreadyOpen = dossier.classList.contains('ev-active');
+  if (isAlreadyOpen) {
+    // already on the dossier screen (Prev/Next) — just refresh content, no page transition
+    dossier.scrollTop = 0;
+    return;
+  }
+  evRxScrollY = window.scrollY;
+  evWipeTransition(function() {
+    document.querySelectorAll('.ev-view').forEach(function(v) { v.classList.remove('ev-active'); });
+    dossier.classList.add('ev-active');
+    window.scrollTo(0, 0);
+  });
 }
 
 function closeDossier() {
-  document.getElementById('ev-rx-dossier').classList.remove('open');
+  evWipeTransition(function() {
+    document.querySelectorAll('.ev-view').forEach(function(v) { v.classList.remove('ev-active'); });
+    const vault = document.getElementById('ev-001');
+    if (vault) vault.classList.add('ev-active');
+    requestAnimationFrame(function() { window.scrollTo(0, evRxScrollY); });
+  });
 }
 
 function navDossier(dir) {
@@ -1389,12 +1371,9 @@ function navDossier(dir) {
   openDossier(next);
 }
 
-document.getElementById('ev-rx-dossier').addEventListener('click', function(e) {
-  if (e.target === this) closeDossier();
-});
 document.addEventListener('keydown', function(e) {
   const dossier = document.getElementById('ev-rx-dossier');
-  const isOpen = dossier.classList.contains('open');
+  const isOpen = dossier.classList.contains('ev-active');
   if (e.key === 'Escape' && isOpen) { closeDossier(); return; }
   if (!isOpen) return;
   if (e.key === 'ArrowRight') { navDossier(1); return; }
@@ -1413,7 +1392,105 @@ const _origEvOpen = window.evOpen;
 window.evOpen = function(id) {
   if (_origEvOpen) _origEvOpen(id);
   if (id === '001') setTimeout(buildReactionGrid, 50);
+  if (id === '004') setTimeout(buildSnapGrid, 50);
 };
+
+/* ═══════════════════════════════════════════
+   SNAPSHOT ARCHIVE — Evidence 004
+═══════════════════════════════════════════ */
+const SCREENSHOTS = [
+  { file: 'SS (1).jpg' },
+  { file: 'SS (1).png' },
+  { file: 'SS (2).jpg' },
+  { file: 'SS (2).png' },
+  { file: 'SS (3).jpg' },
+  { file: 'SS (3).png' },
+  { file: 'SS (4).jpg' },
+  { file: 'SS (4).png' },
+  { file: 'SS (5).jpg' },
+  { file: 'SS (5).png' },
+  { file: 'SS (6).png' },
+  { file: 'SS (7).png' },
+  { file: 'SS (8).png' },
+  { file: 'SS (9).png' },
+  { file: 'SS (10).png' },
+  { file: 'SS (11).png' },
+  { file: 'SS (12).png' },
+  { file: 'SS (13).png' }
+];
+
+let currentSnapIndex = 0;
+let evSnapScrollY = 0;
+
+function snapEncodePath(name) { return name.replace(/ /g, '%20'); }
+
+function buildSnapGrid() {
+  const grid = document.getElementById('snap-root');
+  if (!grid || grid.children.length > 0) return;
+  SCREENSHOTS.forEach((s, i) => {
+    const src = 'images/screenshots/' + snapEncodePath(s.file);
+    const card = document.createElement('div');
+    card.className = 'ev-snap-card';
+    card.innerHTML = `
+      <div class="ev-snap-img-wrap">
+        <img src="${src}" alt="Exhibit ${i + 1}" loading="lazy">
+        <div class="ev-snap-reveal">View Exhibit →</div>
+      </div>
+      <div class="ev-snap-card-body">
+        <div class="ev-snap-card-num">Exhibit ${String(i + 1).padStart(2,'0')}</div>
+        <div class="ev-snap-card-name">Evidence 004</div>
+      </div>
+      <button class="ev-snap-card-btn">View Exhibit →</button>
+    `;
+    card.addEventListener('click', () => snapOpen(i));
+    grid.appendChild(card);
+  });
+}
+
+function snapOpen(index) {
+  currentSnapIndex = index;
+  const s = SCREENSHOTS[index];
+  const src = 'images/screenshots/' + snapEncodePath(s.file);
+  document.getElementById('snap-view-num').textContent = `Exhibit ${index + 1} · Evidence 004`;
+  document.getElementById('snap-view-img').src = src;
+  document.getElementById('snap-view-img').alt = `Exhibit ${index + 1}`;
+  document.getElementById('snap-view-counter').textContent = `${index + 1} / ${SCREENSHOTS.length}`;
+
+  const viewer = document.getElementById('ev-snap');
+  if (viewer.classList.contains('ev-active')) return; // Prev/Next — just refresh content
+  evSnapScrollY = window.scrollY;
+  evWipeTransition(function() {
+    document.querySelectorAll('.ev-view').forEach(function(v) { v.classList.remove('ev-active'); });
+    viewer.classList.add('ev-active');
+    window.scrollTo(0, 0);
+  });
+}
+
+function closeSnapViewer() {
+  evWipeTransition(function() {
+    document.querySelectorAll('.ev-view').forEach(function(v) { v.classList.remove('ev-active'); });
+    const arch = document.getElementById('ev-004');
+    if (arch) arch.classList.add('ev-active');
+    requestAnimationFrame(function() { window.scrollTo(0, evSnapScrollY); });
+  });
+}
+
+function navSnap(dir) {
+  let next = currentSnapIndex + dir;
+  if (next < 0) next = SCREENSHOTS.length - 1;
+  if (next >= SCREENSHOTS.length) next = 0;
+  snapOpen(next);
+}
+
+document.addEventListener('keydown', function(e) {
+  const viewer = document.getElementById('ev-snap');
+  const isOpen = viewer.classList.contains('ev-active');
+  if (e.key === 'Escape' && isOpen) { closeSnapViewer(); return; }
+  if (!isOpen) return;
+  if (e.key === 'ArrowRight') { navSnap(1); return; }
+  if (e.key === 'ArrowLeft')  { navSnap(-1); return; }
+});
+
 </script>
 </body>
 </html>

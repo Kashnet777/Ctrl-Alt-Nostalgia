@@ -7,7 +7,7 @@
 ═══════════════════════════════════════════ */
 
 const PHOTOS = [
-  { file: 'Photo (1).png',  caption: "Rangoli making competition" },
+  { file: 'photo (1).jpg',  caption: "Rangoli making competition" },
   { file: 'Photo (2).jpg',  caption: "Teacher's day ke din Café uncover" },
   { file: 'Photo (3).jpg',  caption: "A normal pic (otherwise you would kill me)" },
   { file: 'Photo (4).jpg',  caption: "Wow even that teddy is taller than you" },

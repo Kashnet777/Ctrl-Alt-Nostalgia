@@ -6,16 +6,16 @@
 ═══════════════════════════════════════════ */
 
 const CALL_SUMMARY = {
-  period: '29 July 2025 → 2 July 2026',
+  period: '29 July 2025 → 4 July 2026',
   stats: [
-    { label: '⏳ Hours Invested in Calls', val: '23 Hours 29 Minutes 46 Seconds' },
-    { label: '🌐 Internet Invested', val: '6.60 GB' },
-    { label: '📞 Calls Archived', val: '25' },
-    { label: '👥 Group Calls', val: '3' },
-    { label: '👤 One-to-One Calls', val: '22' },
-    { label: '🕒 Longest Call', val: '1 Hour 53 Minutes 31 Seconds' },
+    { label: '⏳ Hours Invested in Calls', val: '30 Hours 38 Minutes 13 Seconds' },
+    { label: '🌐 Internet Invested', val: '8.29 GB' },
+    { label: '📞 Calls Archived', val: '28' },
+    { label: '👥 Group Calls', val: '4' },
+    { label: '👤 One-to-One Calls', val: '24' },
+    { label: '🕒 Longest Call', val: '3 Hours 36 Minutes 7 Seconds' },
     { label: '⚡ Shortest Call', val: '6 Seconds' },
-    { label: '📈 Average Call Duration', val: '56 Minutes 23 Seconds' }
+    { label: '📈 Average Call Duration', val: '1 Hour 5 Minutes 39 Seconds' }
   ]
 };
 
