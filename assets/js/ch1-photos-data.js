@@ -11,22 +11,22 @@ const PHOTOS = [
   { file: 'Photo (2).jpg',  caption: "Teacher's day ke din Café uncover" },
   { file: 'Photo (3).jpg',  caption: "A normal pic (otherwise you would kill me)" },
   { file: 'Photo (4).jpg',  caption: "Wow even that teddy is taller than you" },
-  { file: 'Photo (5).jpg',  caption: "Ready to for a photosession" },
+  { file: 'Photo (5).jpg',  caption: "Always ready for a photosession" },
   { file: 'Photo (6).jpg',  caption: "that iconic pic clicked by me" },
   { file: 'Photo (7).jpg',  caption: "Our Only pic we had" },
   { file: 'Photo (8).jpg',  caption: "Bhukkad spotted" },
-  { file: 'Photo (9).jpg',  caption: "Some didn't like the taste of the coffee" },
-  { file: 'Photo (10).jpg', caption: "Kaun hai yaar phone pe, hume bhi bata na or are you tryna be cool" },
-  { file: 'Photo (11).jpg', caption: "Secret call ke baad innocent pic click karana - check" },
+  { file: 'Photo (9).jpg',  caption: "Someone didn't like the taste of da coffee" },
+  { file: 'Photo (10).jpg', caption: "Kaun hai phone pe😏, hume bhi bata na or are you tryna be cool" },
+  { file: 'Photo (11).jpg', caption: "Secret call ke baad innocent pic click karana - ✅" },
   { file: 'Photo (12).jpg', caption: "Khate hue instaan ki pic almost clicked" },
-  { file: 'Photo (13).jpg', caption: "Our most dangerous and capable spy  aquiring important evidences" },
-  { file: 'Photo (14).jpg', caption: "Itna time nahi lgta group founder and member ki first and only pic together" },
+  { file: 'Photo (13).jpg', caption: "Our most dangerous and capable spy aquiring important evidences (Aka Lady-HAM)" },
+  { file: 'Photo (14).jpg', caption: "Itna time nahi lgta group ke founders and members ki first and only pic together" },
   { file: 'Photo (15).jpg', caption: "Image that I begged for" },
   { file: 'Photo (16).jpg', caption: "Image that I asked for" },
   { file: 'Photo (17).jpg', caption: "Oye Hoye!! Driving Shriving!!! Driving Capability Unlocked!!!!!" },
   { file: 'Photo (18).jpg', caption: "A pic that was stolen" },
   { file: 'Photo (19).jpg', caption: "A pic that was willingly shared" },
-  { file: 'Photo (20).jpg', caption: "I pic that was taken from insta" }
+  { file: 'Photo (20).jpg', caption: "A pic that was taken from insta" }
 ];
 
 const REELS = [
